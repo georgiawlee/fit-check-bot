@@ -1,0 +1,458 @@
+/* Import Google Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Spicy+Rice&display=swap');
+
+/* Reset and base styles */
+body {
+  background: url('./assets/Pink Windows 98 Design System/Background.png') center center fixed no-repeat;
+  background-size: 100vw 100vh;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  font-family: 'Spicy Rice', cursive, 'MS Sans Serif', 'Segoe UI', Arial, sans-serif;
+  color: #2d2d2d;
+  margin: 0;
+  min-height: 100vh;
+  min-width: 100vw;
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+}
+
+#root {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 2rem;
+  text-align: center;
+}
+
+.logo {
+  height: 6em;
+  padding: 1.5em;
+  will-change: filter;
+  transition: filter 300ms;
+}
+.logo:hover {
+  filter: drop-shadow(0 0 2em #646cffaa);
+}
+.logo.react:hover {
+  filter: drop-shadow(0 0 2em #61dafbaa);
+}
+
+@keyframes logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  a:nth-of-type(2) .logo {
+    animation: logo-spin infinite 20s linear;
+  }
+}
+
+.card {
+  padding: 2em;
+}
+
+.read-the-docs {
+  color: #888;
+}
+
+.window-frame-wrapper {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  margin-top: 40px;
+}
+.window-frame-bg {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 480px;
+  height: auto;
+  z-index: 0;
+  pointer-events: none;
+}
+
+.page-thumbnail-bg {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: -1;
+  pointer-events: none;
+  object-fit: cover;
+  background: url('./assets/Pink Windows 98 Design System/Background.png') center center no-repeat;
+  background-size: 100vw 100vh;
+  background-repeat: no-repeat;
+}
+
+.fit-check-container {
+  background: rgba(255, 255, 255, 0.92);
+  border: 3px solid #FF70E0;
+  border-radius: 18px;
+  box-shadow: 0 8px 32px #FF70E044, 0 2px 0 #fff;
+  max-width: 420px;
+  margin: 60px auto 0 auto;
+  padding: 2.5rem 2rem 2rem 2rem;
+  position: relative;
+}
+
+.fit-check-bg {
+  width: 100vw;
+  height: 100vh;
+  min-height: 100vh;
+  min-width: 100vw;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: fixed;
+  top: 0;
+  left: 0;
+  background: url('./assets/Pink Windows 98 Design System/Background.png') center center no-repeat;
+  background-size: 100vw 100vh;
+  background-repeat: no-repeat;
+  z-index: 0;
+}
+
+.heybestie-container {
+  position: relative;
+  width: 700px;
+  height: 370px;
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: none;
+}
+
+.heybestie-svg-bg {
+  width: 100%;
+  height: 100%;
+  display: block;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 1;
+  pointer-events: none;
+}
+
+.heybestie-content {
+  position: absolute;
+  top: 48px;
+  left: 48px;
+  width: calc(100% - 96px);
+  height: calc(100% - 96px);
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 0.7rem;
+  box-sizing: border-box;
+  padding: 0;
+}
+
+.heybestie-input {
+  display: none;
+}
+
+.custom-file-label {
+  display: inline-block;
+  background: #FFDFF8;
+  border: 2px solid #FF70E0;
+  color: #9B45CF;
+  font-family: 'MS Sans Serif', Arial, sans-serif;
+  font-size: 0.95rem;
+  border-radius: 6px;
+  padding: 0.18em 0.7em;
+  cursor: pointer;
+  margin-bottom: 0.2rem;
+  transition: background 0.2s, color 0.2s;
+  max-width: 140px;
+  text-align: center;
+}
+.custom-file-label:hover {
+  background: #FF70E0;
+  color: #fff;
+}
+
+.heybestie-tone-toggle {
+  width: 100%;
+  gap: 0.3rem;
+  display: flex;
+  justify-content: center;
+}
+.heybestie-tone-toggle button {
+  font-size: 0.95rem;
+  padding: 0.18rem 0.6rem;
+}
+
+.heybestie-canvas-wrapper {
+  width: 100%;
+  max-width: 350px;
+  aspect-ratio: 1/1.1;
+  background: transparent;
+  border: none;
+  border-radius: 16px;
+  overflow: visible;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0.2rem 0;
+  box-shadow: 0 4px 24px 0 #ffb6e655, 0 0 0 2px #FF70E0;
+  transition: box-shadow 0.3s, background 0.3s;
+}
+
+.paint-canvas-content {
+  /* Make the canvas preview a bit smaller than the wrapper */
+  width: 85%;
+  height: 85%;
+  max-width: 85%;
+  max-height: 85%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 2;
+  background: none;
+  box-shadow: none;
+  border: none;
+  overflow: hidden;
+}
+
+.fit-canvas.heybestie-canvas {
+  width: 100% !important;
+  height: 100% !important;
+  max-width: 100% !important;
+  max-height: 100% !important;
+  display: block;
+  border-radius: 12px;
+  box-shadow: 0 2px 12px 0 #FFDFF8cc;
+  border: 2px solid #FF70E0;
+  background: transparent;
+  transition: box-shadow 0.3s, border 0.3s;
+}
+
+.heybestie-comment {
+  margin-top: 0.2rem;
+  color: #FF70E0;
+  font-family: 'MS Sans Serif', Arial, sans-serif;
+  font-size: 1.1rem;
+  text-align: center;
+  background: #fff;
+  border: 1.5px solid #6c1aff;
+  border-radius: 8px;
+  padding: 0.2rem 0.7rem;
+  max-width: 98%;
+  box-shadow: 0 2px 8px #ffb6e6aa;
+}
+
+.heybestie-actions {
+  display: flex;
+  gap: 0.5rem;
+  margin-top: 0.2rem;
+  justify-content: center;
+}
+.heybestie-actions button, .actions button, .heybestie-tone-toggle button, .tone-toggle button {
+  background: #FFDFF8;
+  border: 2px solid #9B45CF;
+  color: #9B45CF;
+  font-family: 'MS Sans Serif', Arial, sans-serif;
+  font-size: 1.08rem;
+  font-weight: bold;
+  text-align: center;
+  padding: 0.32rem 1.1rem;
+  border-radius: 7px;
+  box-shadow: 0 2px 4px #FFB6E6;
+  transition: all 0.18s ease;
+  outline: none;
+  min-width: 110px;
+  max-width: 100%;
+  white-space: pre-line;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  cursor: pointer;
+}
+.heybestie-actions button:hover, .actions button:hover, .heybestie-tone-toggle button:hover, .tone-toggle button:hover {
+  background: #FF70E0;
+  color: #fff;
+  box-shadow: 0 2px 8px #FFB6E6;
+}
+.heybestie-actions button:active, .actions button:active, .heybestie-tone-toggle button:active, .tone-toggle button:active {
+  background: #9B45CF;
+  color: #fff;
+  box-shadow: 0 1px 2px #FFB6E6;
+  transform: translateY(1px);
+}
+.heybestie-actions button:disabled, .actions button:disabled, .heybestie-tone-toggle button:disabled, .tone-toggle button:disabled {
+  background: #F3E6F9;
+  color: #d1c4e9;
+  border-color: #FFB6E6;
+  cursor: not-allowed;
+  box-shadow: none;
+  opacity: 0.7;
+}
+
+h1 {
+  font-family: 'Spicy Rice', cursive, 'MS Sans Serif', 'Segoe UI', Arial, sans-serif;
+  font-size: 2.2rem;
+  color: #9B45CF;
+  margin-bottom: 1.5rem;
+  letter-spacing: 1px;
+}
+
+input[type="file"] {
+  margin-bottom: 1.2rem;
+  background: #FFF;
+  border: 2px solid #FF70E0;
+  border-radius: 6px;
+  padding: 0.25em 0.7em;
+  font-size: 0.95rem;
+  color: #9B45CF;
+  cursor: pointer;
+  max-width: 180px;
+}
+
+.tone-toggle {
+  display: flex;
+  justify-content: center;
+  gap: 0.5rem;
+  margin-bottom: 1.2rem;
+}
+.tone-toggle.menu-bg {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-bottom: 1.2rem;
+}
+.menu-item-bg {
+  position: absolute;
+  left: 0;
+  top: 0;
+  height: 100%;
+  width: 100%;
+  z-index: 0;
+  opacity: 0.15;
+  pointer-events: none;
+}
+.tone-toggle button {
+  background: #FFDFF8;
+  border: 2px solid #9B45CF;
+  color: #9B45CF;
+  font-family: inherit;
+  font-size: 0.95rem;
+  padding: 0.18rem 0.6rem;
+  border-radius: 7px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  box-shadow: 0 2px 4px #FFB6E6;
+}
+
+.tone-toggle button.active, .tone-toggle button:hover {
+  background: #FF70E0;
+  color: #fff;
+}
+
+.canvas-wrapper {
+  background: #FFF;
+  border: 2px solid #FF70E0;
+  border-radius: 8px;
+  padding: 1rem;
+  margin-bottom: 1.2rem;
+  box-shadow: 0 2px 0 #fff;
+}
+
+.actions {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  margin-top: 1.2rem;
+}
+.actions button {
+  /* Styles are already defined in the shared button selector above */
+  font-size: 0.95rem;
+  padding: 0.25rem 0.7rem;
+}
+
+.comment-text, .fit-check-container .comment-text {
+  color: #9B45CF; /* Hot Purple from palette */
+  font-family: 'Spicy Rice', cursive, 'MS Sans Serif', 'Segoe UI', Arial, sans-serif;
+  font-size: 1.3em;
+  margin: 1.2em 0 0.5em 0;
+  text-align: center;
+  letter-spacing: 0.5px;
+}
+
+/* Retro window border using Figma SVG as a decorative top bar */
+.fit-check-container::before {
+  content: '';
+  display: block;
+  background: url('./assets/Pink Windows 98 Design System/Window Title.svg') no-repeat center/cover;
+  height: 32px;
+  width: 100%;
+  position: absolute;
+  top: -32px;
+  left: 0;
+  border-radius: 12px 12px 0 0;
+}
+
+@media (max-width: 600px) {
+  .fit-check-container {
+    padding: 1rem 0.5rem 1.5rem 0.5rem;
+  }
+  .canvas-wrapper {
+    padding: 0.5rem;
+  }
+  .window-frame-bg {
+    width: 100vw;
+    min-width: 0;
+  }
+  .heybestie-container {
+    width: 98vw;
+    height: auto;
+    max-width: 100vw;
+    max-height: 80vw;
+  }
+  .heybestie-content {
+    gap: 0.3rem;
+    font-size: 0.9rem;
+    padding: 0.1rem;
+    left: 8px;
+    top: 8px;
+    width: calc(100% - 16px);
+    height: calc(100% - 16px);
+  }
+  .heybestie-canvas-wrapper {
+    max-width: 95vw;
+  }
+}
+
+@media (max-width: 900px) {
+  .heybestie-container {
+    width: 98vw;
+    height: auto;
+    max-width: 100vw;
+    max-height: 80vw;
+  }
+  .heybestie-content {
+    gap: 0.5rem;
+    font-size: 0.98rem;
+    left: 12px;
+    top: 12px;
+    width: calc(100% - 24px);
+    height: calc(100% - 24px);
+  }
+  .heybestie-canvas-wrapper {
+    max-width: 95vw;
+  }
+}
