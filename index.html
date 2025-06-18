@@ -4,7 +4,26 @@
     <meta charset="UTF-8" />
     <link rel="icon" type="image/svg+xml" href="/vite.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Vite + React</title>
+    <title>Fit Check - Windows 98 Style</title>
+    <meta name="description" content="Get your outfit rated in Windows 98 style">
+    <!-- Inline styles for emergency window visibility -->
+    <style>
+      .win98-window, [class*="window"] {
+        display: flex !important;
+        visibility: visible !important;
+        opacity: 1 !important;
+        z-index: 9999 !important;
+        overflow: visible !important;
+      }
+      .win98-titlebar {
+        display: flex !important;
+        visibility: visible !important;
+      }
+      .win98-window-content {
+        display: flex !important;
+        visibility: visible !important;
+      }
+    </style>
   </head>
   <body>
     <div id="root"></div>

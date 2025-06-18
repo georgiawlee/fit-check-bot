@@ -1,0 +1,584 @@
+/* Import Google Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Spicy+Rice&display=swap');
+
+/* Import Windows 98 fonts */
+@font-face {
+  font-family: 'MS Sans Serif';
+  src: url('../assets/MS Sans Serif.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+  font-size-adjust: 0.5; /* Improves readability at small sizes */
+  -webkit-font-smoothing: none;
+  -moz-osx-font-smoothing: none;
+}
+
+@font-face {
+  font-family: 'MS Sans Serif Bold';
+  src: url('../assets/MS Sans Serif Bold.ttf') format('truetype');
+  font-weight: bold;
+  font-style: normal;
+  font-display: swap;
+  font-size-adjust: 0.5; /* Improves readability at small sizes */
+  -webkit-font-smoothing: none;
+  -moz-osx-font-smoothing: none;
+}
+
+/* Windows 98 Theme Variables - Pink Edition
+ * Legacy values kept for backward compatibility, using standardized tokens
+ * Note: These will eventually be phased out in favor of the design system tokens
+ * Refer to design-system-complete.css for the source of truth
+ */
+:root {
+  /* Base colors - mapped to standardized design tokens */
+  --win98-gray: var(--theme-pink-light);        /* Maps to theme-pink-light */
+  --win98-gray-darker: var(--theme-pink);       /* Maps to theme-pink */
+  --win98-gray-lighter: var(--theme-pink-lightest); /* Maps to theme-pink-lightest */
+  --win98-blue: var(--theme-purple-lighter);    /* Maps to theme-purple-lighter */
+  --win98-blue-lighter: var(--theme-purple);    /* Maps to theme-purple */
+  --win98-button-face: var(--theme-pink-light); /* Maps to theme-pink-light */
+  --win98-button-highlight: var(--white);       /* Maps to white token */
+  --win98-button-shadow: var(--theme-pink);     /* Maps to theme-pink */
+  --win98-button-text: var(--theme-purple-lighter); /* Maps to theme-purple-lighter */
+  
+  /* Button framing - using standardized tokens */
+  --btn-frame-inner-1: var(--pink-light);       /* Inner shadow 1 */
+  --btn-frame-inner-2: var(--pink-medium);      /* Inner shadow 2 */
+  --btn-frame-inner-3: var(--white);            /* Inner shadow 3 */
+  --btn-frame-inner-4: var(--theme-purple-lighter); /* Inner shadow 4 */
+
+  /* Inset framing - using standardized tokens */
+  --inset-frame-inner-1: var(--theme-purple-lighter); /* Inner shadow 1 */
+  --inset-frame-inner-2: var(--pink-light);     /* Inner shadow 2 */
+  --inset-frame-inner-3: var(--pink-medium);    /* Inner shadow 3 */
+  --inset-frame-inner-4: var(--white);          /* Inner shadow 4 */
+  
+  /* Typography - using standardized tokens */
+  --win98-font-size: var(--regular-font-size);
+  --win98-line-height: var(--regular-line-height);
+
+  /* Legacy theme colors - kept for backward compatibility */
+  --theme-pink: #FF70E0;             /* Same as design system token */
+  --theme-pink-light: #FFDFF8;       /* Same as design system token */
+  --theme-purple: #C76CEF;           /* Updated to match design system */
+  --theme-purple-light: #F3E6F9;     /* Will be phased out in favor of theme-purple-lighter */
+}
+
+/* Reset and base styles */
+body {
+  background: url('../assets/backgrounds/Background.png') center center fixed no-repeat;
+  background-size: 100vw 100vh;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  font-family: 'MS Sans Serif', 'Segoe UI', Arial, sans-serif;
+  color: var(--theme-purple);
+  margin: 0;
+  min-height: 100vh;
+  min-width: 100vw;
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+}
+
+#root {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 2rem;
+  text-align: center;
+}
+
+/* 
+ * Default Vite styles removed (May 23, 2025):
+ * - .logo, .logo:hover, .logo.react:hover
+ * - @keyframes logo-spin
+ * - @media for logo animation
+ * - .card
+ * - .read-the-docs
+ */
+
+.window-frame-wrapper {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  margin-top: 40px;
+}
+.window-frame-bg {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 480px;
+  height: auto;
+  z-index: 0;
+  pointer-events: none;
+}
+
+.page-thumbnail-bg {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: -1;
+  pointer-events: none;
+  object-fit: cover;
+  background: url('../assets/backgrounds/Background.png') center center no-repeat;
+  background-size: 100vw 100vh;
+  background-repeat: no-repeat;
+}
+
+.fit-check-container {
+  background: rgba(255, 255, 255, 0.92);
+  border: 3px solid #FF70E0;
+  border-radius: 18px;
+  box-shadow: 0 8px 32px #FF70E044, 0 2px 0 #fff;
+  max-width: 420px;
+  margin: 60px auto 0 auto;
+  padding: 2.5rem 2rem 2rem 2rem;
+  position: relative;
+}
+
+.fit-check-bg {
+  width: 100vw;
+  height: 100vh;
+  min-height: 100vh;
+  min-width: 100vw;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: fixed;
+  top: 0;
+  left: 0;
+  background: url('../assets/backgrounds/Background.png') center center no-repeat;
+  background-size: cover;
+  background-position: center;
+  z-index: 0;
+  padding: 10px;
+  box-sizing: border-box;
+  overflow: auto;
+}
+
+.heybestie-container {
+  position: relative;
+  width: min(95vw, 1000px);
+  height: min(85vh, 600px);
+  min-height: 400px;
+  min-width: 320px;
+  flex-shrink: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  background-color: var(--theme-pink-light);
+  box-shadow: 
+    inset -1px -1px var(--pink-medium),
+    inset 1px 1px var(--pink-light),
+    2px 2px 8px rgba(255, 112, 224, 0.3);
+  border: 3px solid var(--theme-pink);
+  border-style: outset;
+  max-width: 100%;
+  box-sizing: border-box;
+  overflow: hidden;
+  transition: width var(--animation-speed-slow) ease, height var(--animation-speed-slow) ease;
+  padding-top: 18px; /* Space for the title bar */
+}
+
+.heybestie-svg-bg {
+  width: 100%;
+  height: 100%;
+  display: block;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 1;
+  pointer-events: none;
+}
+
+/* Separate windows layout - Now consolidated in win98-windows-complete.css */
+
+.heybestie-preview-container {
+  width: 100%;
+  height: calc(100% - 18px); /* Subtract title bar height */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  box-sizing: border-box;
+  overflow: hidden;
+  padding: 10px;
+  transition: height var(--animation-speed-slow) ease;
+}
+
+.heybestie-controls-container {
+  width: 100%;
+  height: calc(100% - 18px); /* Subtract title bar height */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  box-sizing: border-box;
+  overflow-y: auto;
+  padding: 6px 8px;
+  transition: height var(--animation-speed-slow) ease;
+}
+
+.minimized {
+  height: 0 !important;
+  padding: 0 !important;
+  overflow: hidden !important;
+}
+
+.empty-canvas-placeholder {
+  width: 100%;
+  height: 100%;
+  min-height: 350px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: var(--win98-gray-lighter);
+  border: inset 2px var(--win98-gray-darker);
+  box-shadow: 
+    inset 1px 1px var(--inset-frame-inner-1),
+    inset -1px -1px var(--inset-frame-inner-4);
+  opacity: 0.4;
+  position: relative;
+}
+
+/* Windows 98 Window Component Styles - NOW CONSOLIDATED IN win98-windows-complete.css */
+/* Window styles have been moved to win98-windows-complete.css */
+
+/* .win98-window-content styles moved to win98-windows-complete.css */
+
+/* Media query for smaller screens - window-related styles moved to win98-windows-complete.css */
+@media (max-width: 850px) {
+  .canvas-preview-bg-wrapper {
+    max-height: 100% !important;
+  }
+  
+  .empty-canvas-placeholder {
+    height: 200px;
+    min-height: 200px;
+  }
+  
+  .fit-check-bg {
+    flex-direction: column;
+    padding: 10px;
+    overflow-y: auto;
+  }
+}
+
+.heybestie-content {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 3px;
+  box-sizing: border-box;
+  padding: 0;
+  overflow: hidden;
+}
+
+/* Scrollbar styling removed */
+
+/* SVG background has been removed */
+
+.heybestie-input {
+  display: none;
+}
+
+.win98-file-input {
+  margin: 10px 0 12px; /* Increased spacing between file input and title bar */
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 28px;
+}
+
+/* Custom File Label Button Styles - NOW CONSOLIDATED IN win98-buttons-complete.css */
+/* .custom-file-label styles have been moved to win98-buttons-complete.css */
+
+/* Input Icon Styles - NOW CONSOLIDATED IN win98-buttons-complete.css */
+/* .input-icon styles have been moved to win98-buttons-complete.css */
+
+/* Hover and active states are handled by the .win98-button-classic class */
+
+.heybestie-tone-toggle {
+  width: 90%;
+  gap: 0.3rem;
+  display: flex;
+  justify-content: center;
+  margin-top: 6px;
+}
+
+.heybestie-tone-toggle button {
+  font-size: 0.95rem;
+  padding: 0.18rem 0.6rem;
+}
+
+/* Windows 98 Tone Toggle Buttons - NOW CONSOLIDATED IN win98-buttons-complete.css */
+/* Tone toggle button styles have been moved to win98-buttons-complete.css */
+
+/* Control Group Layout Styles - NOW CONSOLIDATED IN win98-radio-complete.css */
+/* .tone-toggle.win98-control-group styles have been moved to win98-radio-complete.css */
+
+/* Radio Option Styles - NOW CONSOLIDATED IN win98-radio-complete.css */
+/* .win98-radio-option styles have been moved to win98-radio-complete.css */
+
+/* Tone Option Button Sizing - NOW CONSOLIDATED IN win98-buttons-complete.css */
+/* Compact tone option button styles have been moved to win98-buttons-complete.css */
+
+/* Space control elements more efficiently */
+
+/* Control Group Title Styles - NOW CONSOLIDATED IN win98-radio-complete.css */
+/* .win98-control-group-title styles have been moved to win98-radio-complete.css */
+
+/* Radio Button Icon and Fallback Styles - NOW CONSOLIDATED IN win98-radio-complete.css */
+/* .win98-radio-icon and .win98-radio styles have been moved to win98-radio-complete.css */
+
+/* Make the status bar more compact using design tokens */
+.win98-status-bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1px 3px;
+  height: 14px;
+  font-size: calc(var(--win98-font-size) - 2px);
+  font-family: 'MS Sans Serif', sans-serif;
+  background-color: var(--win98-gray);
+  border-top: 1px solid var(--win98-button-shadow);
+  box-shadow: 
+    inset 0 1px 0 var(--win98-button-highlight);
+  margin-top: 3px;
+  color: var(--win98-button-text);
+  width: 100%;
+}
+
+.win98-status-item {
+  display: flex;
+  align-items: center;
+  padding: 0 2px;
+}
+
+.win98-status-separator {
+  width: 1px;
+  height: 10px;
+  background: var(--win98-gray-darker);
+  margin: 0 5px;
+  box-shadow: 1px 0 0 var(--win98-button-highlight);
+}
+
+.win98-status-item img {
+  width: 12px;
+  height: 12px;
+  margin-right: 4px;
+  image-rendering: pixelated;
+  vertical-align: middle;
+}
+
+/* Make action buttons more compact using design token values and SVG backgrounds */
+.actions.heybestie-actions.win98-action-bar {
+  margin-top: 0; /* Removed margin since we use gap in the container */
+  padding-top: 6px;
+  padding-bottom: 2px;
+  display: flex;
+  justify-content: center;
+  gap: 6px; /* Reduced gap between buttons for Windows 98 style */
+  width: 100%;
+  position: relative;
+  border-top: 1px solid var(--win98-button-highlight);
+  box-shadow: 0 -1px 0 var(--win98-button-shadow);
+}
+
+/* Action Button Styles - NOW CONSOLIDATED IN win98-buttons-complete.css */
+/* .heybestie-actions button styles have been moved to win98-buttons-complete.css */
+
+/* Action Button Disabled States - NOW CONSOLIDATED IN win98-buttons-complete.css */
+/* .heybestie-actions button:disabled styles have been moved to win98-buttons-complete.css */
+
+/* Button Icon Styles - NOW CONSOLIDATED IN win98-buttons-complete.css */
+/* .button-icon styles have been moved to win98-buttons-complete.css */
+
+/* Window controls have been moved to win98-windows-complete.css */
+
+/* Adjust message box for better fit using design tokens */
+.win98-message-box {
+  margin: 12px 0; /* Increased margin */
+  width: 90%;
+  border: outset 2px var(--win98-gray-darker);
+  box-shadow: 
+    inset -1px -1px var(--btn-frame-inner-2),
+    inset 1px 1px var(--btn-frame-inner-1),
+    0 2px 4px rgba(255, 112, 224, 0.2);
+  background-color: var(--win98-gray);
+  align-self: center;
+}
+
+/* Special override for window buttons moved to win98-windows-complete.css */
+
+.win98-message-box-header {
+  padding: 2px 3px;
+  height: 18px;
+  font-size: 11px;
+  background: linear-gradient(134.17deg, #FF39B8 0%, #FF96E8 100%) !important;
+  display: flex;
+  align-items: center;
+  font-family: 'MS Sans Serif Bold', 'MS Sans Serif', sans-serif;
+  color: var(--white);
+  text-shadow: 1px 1px 1px var(--theme-purple);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.win98-message-box-header img {
+  width: 14px;
+  height: 14px;
+  margin-right: 4px;
+}
+
+.comment-text.heybestie-comment {
+  padding: 6px 8px;
+  font-size: var(--win98-font-size);
+  line-height: 1.4;
+  margin: 0;
+  font-family: 'MS Sans Serif', Arial, sans-serif;
+  background-color: var(--win98-gray);
+  color: var(--win98-button-text);
+  box-shadow: 
+    inset 1px 1px var(--inset-frame-inner-1),
+    inset -1px -1px var(--inset-frame-inner-4);
+  overflow-wrap: break-word;
+  word-break: break-word;
+  max-height: 100px; /* Increased for vertical layout */
+  overflow-y: auto;
+}
+
+/* Make progress bar more compact and authentic */
+.win98-progress-wrapper {
+  width: 100%;
+  padding: 0 10px;
+  box-sizing: border-box;
+  position: absolute;
+  bottom: 24px;
+  left: 0;
+  right: 0;
+  z-index: 20;
+  display: flex;
+  justify-content: center;
+}
+
+.win98-progress {
+  height: 12px;
+  width: 95%;
+  max-width: 500px; /* Increased for horizontal layout */
+  border: inset 2px var(--theme-pink);
+  background-color: var(--theme-pink-lightest);
+  box-shadow: var(--inset-shadow);
+  position: relative;
+  overflow: hidden;
+}
+
+/* Animated progress bar inner track */
+.win98-progress-bar {
+  height: 100%;
+  width: 100%;
+  background: repeating-linear-gradient(
+    -45deg,
+    var(--theme-pink),
+    var(--theme-pink) 10px,
+    var(--theme-pink-dark) 10px,
+    var(--theme-pink-dark) 20px
+  );
+  /* Using the standardized animation from win98-visual-effects-complete.css */
+  animation: progressAnimation var(--animation-speed-normal) linear infinite;
+  position: absolute;
+  left: 0;
+  top: 0;
+}
+
+/* Animation has been moved to win98-visual-effects-complete.css */
+
+/* Reduce space taken by info messages */
+.win98-info {
+  padding: 4px 6px;
+  margin: 4px 0;
+  font-size: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.win98-info img {
+  width: 14px;
+  height: 14px;
+  margin-right: 5px;
+}
+
+/* Utility selectors for Windows 98 elements using design tokens */
+.win98-outset-border {
+  border: outset 1px var(--win98-gray-darker);
+  box-shadow: 
+    inset 2px 2px var(--btn-frame-inner-1),
+    inset -2px -2px var(--btn-frame-inner-2),
+    inset 1px 1px var(--btn-frame-inner-3),
+    inset -1px -1px var(--btn-frame-inner-4);
+}
+
+.win98-inset-border {
+  border: inset 1px var(--win98-gray-darker);
+  box-shadow: 
+    inset 2px 2px var(--inset-frame-inner-1),
+    inset -2px -2px var(--inset-frame-inner-2),
+    inset 1px 1px var(--inset-frame-inner-3),
+    inset -1px -1px var(--inset-frame-inner-4);
+}
+
+.win98-text {
+  font-family: 'MS Sans Serif', sans-serif;
+  font-size: var(--win98-font-size);
+  line-height: var(--win98-line-height);
+}
+
+.win98-text-bold {
+  font-family: 'MS Sans Serif Bold', 'MS Sans Serif', sans-serif;
+  font-weight: bold;
+  font-size: var(--win98-font-size);
+  line-height: calc(var(--win98-line-height) * 1.1);
+}
+
+/* Window title styles have been moved to win98-windows-complete.css */
+
+/* Window content styles have been moved to win98-windows-complete.css */
+
+/* Windows 98 Classic Button Styles - NOW CONSOLIDATED IN win98-buttons-complete.css */
+/* .win98-button-classic styles have been moved to win98-buttons-complete.css */
+
+/* Windows 98 Button Focus Animation Styles - NOW CONSOLIDATED IN win98-buttons-complete.css */
+/* .win98-focus-animation styles have been moved to win98-buttons-complete.css */
+
+/* Windows 98 Button Disabled State - NOW CONSOLIDATED IN win98-buttons-complete.css */
+/* .win98-button-classic:disabled styles have been moved to win98-buttons-complete.css */
+
+.win98-info {
+  display: flex;
+  align-items: center;
+  background-color: var(--win98-gray-lighter);
+  border: outset 1px var(--win98-gray-darker);
+  padding: 5px 8px;
+  font-family: 'MS Sans Serif', Arial, sans-serif;
+  font-size: var(--win98-font-size);
+  margin: 5px 0;
+  color: var(--win98-button-text);
+}
+
+/* Loading cursor */
+.is-loading,
+.is-loading * {
+  cursor: url('../assets/Cursor/Waiting.svg'), wait !important;
+}

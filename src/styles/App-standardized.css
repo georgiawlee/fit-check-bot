@@ -1,0 +1,282 @@
+/* 
+ * App-standardized.css
+ * Cleaned up application-specific styles
+ * 
+ * This file removes all duplicate styles that have been moved to
+ * standardized component files and keeps only app-specific
+ * styles and layouts.
+ * 
+ * CREATED: May 23, 2025
+ */
+
+/* Import Google Fonts - kept for direct import */
+@import url('https://fonts.googleapis.com/css2?family=Spicy+Rice&display=swap');
+
+/* Import Windows 98 fonts - kept here for application-wide use */
+@font-face {
+  font-family: 'MS Sans Serif';
+  src: url('../assets/MS Sans Serif.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+  font-size-adjust: 0.5; /* Improves readability at small sizes */
+  -webkit-font-smoothing: none;
+  -moz-osx-font-smoothing: none;
+}
+
+@font-face {
+  font-family: 'MS Sans Serif Bold';
+  src: url('../assets/MS Sans Serif Bold.ttf') format('truetype');
+  font-weight: bold;
+  font-style: normal;
+  font-display: swap;
+  font-size-adjust: 0.5; /* Improves readability at small sizes */
+  -webkit-font-smoothing: none;
+  -moz-osx-font-smoothing: none;
+}
+
+/* 
+ * Legacy variable mappings have been moved to design-system-complete.css
+ * Root theme variables are now sourced from the design system
+ */
+
+/* Reset and base styles - App-specific background */
+body {
+  background: url('../assets/backgrounds/Background.png') center center fixed no-repeat;
+  background-size: 100vw 100vh;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  font-family: 'MS Sans Serif', 'Segoe UI', Arial, sans-serif;
+  color: var(--theme-purple);
+  margin: 0;
+  min-height: 100vh;
+  min-width: 100vw;
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+}
+
+#root {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 2rem;
+  text-align: center;
+}
+
+/* App-specific layout styles */
+
+.window-frame-wrapper {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  margin-top: 40px;
+}
+
+.window-frame-bg {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 480px;
+  height: auto;
+  z-index: 0;
+  pointer-events: none;
+}
+
+.page-thumbnail-bg {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: -1;
+  pointer-events: none;
+  object-fit: cover;
+  background: url('../assets/backgrounds/Background.png') center center no-repeat;
+  background-size: 100vw 100vh;
+  background-repeat: no-repeat;
+}
+
+.fit-check-container {
+  background: rgba(255, 255, 255, 0.92);
+  border: 3px solid var(--theme-pink);
+  border-radius: 18px;
+  box-shadow: var(--elevated-shadow);
+  max-width: 420px;
+  margin: 60px auto 0 auto;
+  padding: 2.5rem 2rem 2rem 2rem;
+  position: relative;
+}
+
+.fit-check-bg {
+  width: 100vw;
+  height: 100vh;
+  min-height: 100vh;
+  min-width: 100vw;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: fixed;
+  top: 0;
+  left: 0;
+  background: url('../assets/backgrounds/Background.png') center center no-repeat;
+  background-size: cover;
+  background-position: center;
+  z-index: 0;
+  padding: 10px;
+  box-sizing: border-box;
+  overflow: auto;
+}
+
+/* App-specific container styles */
+.heybestie-container {
+  position: relative;
+  width: min(95vw, 1000px);
+  height: min(85vh, 600px);
+  min-height: 400px;
+  min-width: 320px;
+  flex-shrink: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  background-color: var(--theme-pink-light);
+  box-shadow: var(--window-shadow);
+  border: 3px solid var(--theme-pink);
+  border-style: outset;
+  max-width: 100%;
+  box-sizing: border-box;
+  overflow: hidden;
+  transition: width var(--animation-speed-slow) ease, height var(--animation-speed-slow) ease;
+  padding-top: 18px; /* Space for the title bar */
+}
+
+.heybestie-svg-bg {
+  width: 100%;
+  height: 100%;
+  display: block;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 1;
+  pointer-events: none;
+}
+
+/* App-specific preview container */
+.heybestie-preview-container {
+  width: 100%;
+  height: calc(100% - 18px); /* Subtract title bar height */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  box-sizing: border-box;
+  overflow: hidden;
+  padding: 10px;
+  transition: height var(--animation-speed-slow) ease;
+}
+
+.heybestie-controls-container {
+  width: 100%;
+  height: calc(100% - 18px); /* Subtract title bar height */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  box-sizing: border-box;
+  overflow-y: auto;
+  padding: 6px 8px;
+  transition: height var(--animation-speed-slow) ease;
+}
+
+.minimized {
+  height: 0 !important;
+  padding: 0 !important;
+  overflow: hidden !important;
+}
+
+.empty-canvas-placeholder {
+  width: 100%;
+  height: 100%;
+  min-height: 350px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: var(--theme-pink-lightest);
+  border: inset 2px var(--theme-pink);
+  box-shadow: var(--inset-shadow);
+  opacity: 0.4;
+  position: relative;
+}
+
+/* Media query for responsive layout */
+@media (max-width: 850px) {
+  .canvas-preview-bg-wrapper {
+    max-height: 100% !important;
+  }
+  
+  .empty-canvas-placeholder {
+    height: 200px;
+    min-height: 200px;
+  }
+  
+  .fit-check-bg {
+    flex-direction: column;
+    padding: 10px;
+    overflow-y: auto;
+  }
+}
+
+.heybestie-content {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 3px;
+  box-sizing: border-box;
+  padding: 0;
+  overflow: hidden;
+}
+
+.heybestie-input {
+  display: none;
+}
+
+/* App-specific tone toggle group */
+.heybestie-tone-toggle {
+  width: 90%;
+  gap: 0.3rem;
+  display: flex;
+  justify-content: center;
+  margin-top: 6px;
+}
+
+.heybestie-tone-toggle button {
+  font-size: 0.95rem;
+  padding: 0.18rem 0.6rem;
+}
+
+/* App-specific action bar layout */
+.actions.heybestie-actions.win98-action-bar {
+  margin-top: 0;
+  padding-top: 6px;
+  padding-bottom: 2px;
+  display: flex;
+  justify-content: center;
+  gap: 6px;
+  width: 100%;
+  position: relative;
+  border-top: 1px solid var(--win98-button-highlight);
+  box-shadow: 0 -1px 0 var(--win98-button-shadow);
+}
+
+/* Loading cursor */
+.is-loading,
+.is-loading * {
+  cursor: url('../assets/Cursor/Waiting.svg'), wait !important;
+}

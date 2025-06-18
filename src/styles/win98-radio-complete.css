@@ -1,0 +1,202 @@
+/**
+ * Windows 98 Radio Button Styling
+ * This file contains all styles for traditional Windows 98-style radio buttons
+ * 
+ * Consolidated from:
+ * - radio-button-restore.css
+ * - traditional-radio-override.css
+ * - App.css radio styles (May 2025)
+ * - win98-buttons-complete.css radio-related styles (May 2025)
+ */
+
+/* ======================= */
+/* Button Styling Removal  */
+/* ======================= */
+
+/* Remove button-like appearance completely */
+.tone-toggle button.tone-option {
+  padding: 0;
+  margin: 2px 0;
+  height: auto;
+  width: 100%;
+  display: block;
+  background: transparent !important;
+  border: none !important;
+  box-shadow: none !important;
+  position: relative;
+  cursor: default;
+  text-align: left;
+  min-height: 16px;
+  -webkit-appearance: none;
+  appearance: none;
+  outline: none !important;
+}
+
+/* Remove any button-like states */
+.tone-toggle button.tone-option:active,
+.tone-toggle button.tone-option:hover,
+.tone-toggle button.tone-option.active {
+  background: transparent !important;
+  border: none !important;
+  box-shadow: none !important;
+  outline: none !important;
+}
+
+/* ======================= */
+/* Radio Option Styling    */
+/* ======================= */
+
+/* Style the radio option to look like a traditional radio label */
+.win98-radio-option {
+  margin: 1px 0;
+  font-size: var(--win98-font-size);
+  padding: 0 0 0 20px; /* Space for radio image */
+  line-height: var(--win98-line-height);
+  font-family: "MS Sans Serif", sans-serif;
+  position: relative;
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+  font-weight: normal;
+  user-select: none;
+  background: transparent;
+}
+
+/* Add hover effect only to the text part */
+.tone-toggle button.tone-option:hover .win98-radio-option {
+  background: transparent;
+  color: #FF70E0; /* Theme pink color directly applied */
+}
+
+/* Coloring for radio option text */
+.tone-toggle button.tone-option .win98-radio-option {
+  color: var(--win98-button-text);
+}
+
+/* Active state styling */
+.tone-toggle button.tone-option.active .win98-radio-option {
+  font-weight: bold;
+  color: #FF70E0; /* Theme pink color directly applied */
+}
+
+/* Ensure text stays pink when both hovering and selected */
+.tone-toggle button.tone-option.active:hover .win98-radio-option {
+  color: #FF70E0; /* Theme pink color directly applied */
+}
+
+/* ======================= */
+/* Radio Icon Styling      */
+/* ======================= */
+
+/* Make radio icon look like a traditional Windows 98 radio */
+.tone-toggle button.tone-option .win98-radio-icon,
+.win98-radio-icon {
+  width: 12px;
+  height: 12px;
+  margin-right: 4px;
+  image-rendering: pixelated;
+  vertical-align: middle;
+  position: absolute;
+  left: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  pointer-events: none;
+}
+
+/* Keep old radio styles for fallback/compatibility */
+.win98-radio {
+  display: none;
+}
+
+/* ======================= */
+/* Container Styling       */
+/* ======================= */
+
+/* 
+ * Note: Base control group styling is now in design-system-complete.css
+ * Only component-specific overrides should be kept here
+ */
+
+/* Add spacing between radio options for a more traditional look */
+.tone-toggle.win98-control-group button.tone-option {
+  margin: 4px 0 !important;
+}
+
+/* Add auto margin for centering tone toggle specifically */
+.tone-toggle.win98-control-group {
+  margin: 0 auto !important;
+  margin-bottom: 8px !important;
+  line-height: 1;
+  z-index: 1;
+}
+
+/* ======================= */
+/* Focus Effect Styling    */
+/* ======================= */
+
+/* Remove the focus animation from appearing as button-like */
+.win98-focus-animation {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  pointer-events: none;
+}
+
+/* Make focus state more subtle and not button-like */
+.tone-toggle button.tone-option:focus-visible .win98-focus-animation {
+  outline: 1px dotted var(--theme-purple-lighter);
+  outline-offset: 0;
+  animation: focusDotted var(--animation-speed-slow) step-start infinite;
+  /* Only highlight the text area, not the whole button */
+  left: 20px !important; 
+  top: 0 !important;
+  right: 0 !important;
+  bottom: 0 !important;
+}
+
+/* Animation for the focus effect is now defined in win98-visual-effects-complete.css */
+
+/* ======================= */
+/* Button-Like Radio Styling */
+/* ======================= */
+
+/* When radio buttons need to have button-like appearance but maintain radio functionality */
+button.tone-option {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  padding-left: 8px;
+  width: 100%;
+  text-align: left;
+  margin: 2px 0;
+  position: relative;
+  cursor: pointer;
+}
+
+/* Special visual treatment for tone radio buttons that appear within button contexts */
+button.tone-option:not(.tone-toggle button.tone-option) {
+  --btn-hover-bg: #FFE5F9;
+  --btn-active-bg: #FFD0F0;
+  
+  background-color: var(--theme-pink-light);
+  border-color: var(--theme-purple);
+  color: var(--theme-purple);
+  font-family: 'MS Sans Serif Bold', sans-serif;
+  box-shadow: 
+    inset 1px 1px 0 #ffffff,
+    inset -1px -1px 0 var(--theme-pink);
+}
+
+/* Special hover/focus states for these hybrid buttons */
+button.tone-option:not(.tone-toggle button.tone-option):hover,
+button.tone-option:not(.tone-toggle button.tone-option):focus {
+  background-color: var(--btn-hover-bg, var(--win98-gray-lighter));
+  border-color: var(--theme-pink-dark, var(--win98-button-shadow));
+}
+
+/* Special active state for these hybrid buttons */
+button.tone-option:not(.tone-toggle button.tone-option):active {
+  background-color: var(--btn-active-bg, var(--win98-gray));
+}

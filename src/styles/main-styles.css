@@ -1,0 +1,96 @@
+/**
+ * main-styles.css
+ * Central import file for all CSS styles
+ * 
+ * This file organizes CSS imports in the correct order to
+ * ensure proper cascading and override behavior.
+ * 
+ * UPDATED: May 27, 2025
+ * - Switched to complete CSS approach for consistency
+ */
+
+/* -----------------------------------------------------
+ * 1. RESET AND FONTS
+ * ----------------------------------------------------- */
+
+/* Base reset and normalization */
+@import url('./index.css');
+
+/* Font definitions are in App.css */
+
+/* -----------------------------------------------------
+ * 2. DESIGN SYSTEM AND TOKENS
+ * ----------------------------------------------------- */
+
+/* Design system tokens and variables */
+@import url('./design-system-complete.css');
+
+/* Visual effects and animations */
+@import url('./win98-visual-effects-complete.css');
+
+/* Animations and transitions */
+@import url('./win98-animations.css');
+
+/* -----------------------------------------------------
+ * 3. COMPONENT STYLES
+ * ----------------------------------------------------- */
+
+/* Base window components */
+@import url('./win98-windows-complete.css');
+
+/* Button components */
+@import url('./win98-buttons-complete.css');
+
+/* Progress indicators */
+@import url('./win98-progress.css');
+
+/* Radio buttons */
+@import url('./win98-radio-complete.css');
+
+/* UI elements */
+@import url('./win98-ui-elements-complete.css');
+
+/* Custom scrollbars */
+@import url('./win98-scrollbars.css');
+
+/* Control fixes */
+@import url('./win98-controls-fix.css');
+
+/* -----------------------------------------------------
+ * 4. LAYOUT AND APP-SPECIFIC STYLES
+ * ----------------------------------------------------- */
+
+/* Interface elements */
+@import url('./win98-interface-complete.css');
+
+/* Application layout */
+@import url('./win98-app-layout-complete.css');
+
+/* Application components */
+@import url('./app-components-complete.css');
+
+/* Application-specific overrides */
+@import url('./App.css');
+
+/* -----------------------------------------------------
+ * 5. ASSET STYLES
+ * ----------------------------------------------------- */
+
+/* Asset styling including icons and images */
+@import url('./win98-assets-complete.css');
+
+/* Custom cursors */
+@import url('./win98-cursors.css');
+
+/* -----------------------------------------------------
+ * 6. DOCUMENTATION NOTES
+ * ----------------------------------------------------- */
+
+/*
+ * Documentation files:
+ * - component-style-guide.md: Overview of all standardized components
+ * - visual-effects-guide.md: Animation and transition guidelines
+ * - css-optimization-report.md: Analysis of CSS improvements
+ * - css-consolidation-final-summary.md: Summary of the standardization project
+ * - message-box-font-update.md: Special handling for message box fonts
+ */

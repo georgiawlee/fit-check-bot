@@ -1,0 +1,380 @@
+/**
+ * Windows 98 UI Elements
+ * Consolidated from:
+ * - win98-buttons-complete.css
+ * - win98-status-bar-complete.css
+ * - win98-assets-complete.css
+ */
+
+/* =========================== */
+/* BUTTON STYLING              */
+/* =========================== */
+
+/* Reset unwanted button styling */
+button {
+  appearance: none;
+  -webkit-appearance: none;
+  border-radius: 0;
+  box-sizing: border-box;
+}
+
+/* Standard button styling */
+.win98-button,
+.win98-button-classic,
+.custom-file-label {
+  color: var(--win98-button-text);
+  font-family: 'MS Sans Serif', Arial, sans-serif;
+  font-size: var(--win98-font-size);
+  background-color: var(--win98-button-face);
+  border: outset 2px var(--theme-pink);
+  box-shadow: var(--button-shadow);
+  cursor: pointer;
+  position: relative;
+  overflow: hidden;
+  padding: 3px 8px;
+  text-align: center;
+}
+
+/* Hover state */
+.win98-button:hover,
+.win98-button-classic:hover {
+  background-color: var(--win98-gray-lighter);
+  color: var(--theme-pink);
+}
+
+/* Active state */
+.win98-button:active,
+.win98-button-classic:active {
+  border: inset 2px var(--theme-pink);
+  box-shadow: var(--active-shadow);
+  color: var(--theme-pink);
+  padding-top: 4px;
+  padding-left: 9px;
+  padding-bottom: 2px;
+  padding-right: 7px;
+}
+
+/* Focus state */
+.win98-button:focus,
+.win98-button-classic:focus {
+  outline: none;
+}
+
+/* Focus visible state with animation */
+.win98-button-classic:focus-visible .win98-focus-animation {
+  outline: 1px dotted var(--theme-purple-lighter);
+  outline-offset: -5px;
+  animation: focusDotted var(--animation-speed-slow) step-start infinite;
+}
+
+/* Disabled state */
+.win98-button:disabled,
+.win98-button-classic:disabled {
+  color: rgba(155, 69, 207, 0.5);
+  box-shadow: none;
+  background-color: var(--win98-gray-lighter);
+  border: outset 2px rgba(255, 112, 224, 0.5);
+  cursor: not-allowed;
+}
+
+/* Window control buttons */
+.win98-window-button {
+  width: 16px;
+  height: 14px;
+  padding: 0;
+  margin-left: 2px;
+  background-color: transparent !important;
+  border: none !important;
+  border-radius: 0 !important;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  position: relative;
+  transition: none !important;
+  box-shadow: none !important;
+}
+
+.win98-window-button:hover {
+  border: none !important;
+  outline: 1px solid white !important;
+  outline-offset: -1px !important;
+  background-color: var(--win98-gray-darker) !important;
+  box-shadow: none !important;
+}
+
+.win98-window-button:active {
+  border: none !important;
+  outline: 1px solid white !important;
+  outline-offset: -1px !important;
+  background-color: var(--theme-pink) !important;
+  box-shadow: none !important;
+}
+
+.win98-window-button:focus,
+.win98-window-button:focus-visible {
+  border: none !important;
+  outline: 1px dotted white !important;
+  outline-offset: -1px !important;
+  background-color: transparent !important;
+  box-shadow: none !important;
+}
+
+/* Special override to prevent circular shapes on window buttons */
+button.win98-window-button::before,
+button.win98-window-button::after {
+  display: none !important;
+  content: none !important;
+  background: none !important;
+  border: none !important;
+  border-radius: 0 !important;
+}
+
+/* =========================== */
+/* STATUS BAR STYLING          */
+/* =========================== */
+
+/* Main status bar container */
+.win98-status-bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1px 3px;
+  height: 16px;
+  background-color: var(--win98-gray);
+  border-top: 1px solid var(--win98-button-highlight);
+  box-shadow: 0 -1px 0 var(--win98-button-shadow);
+  font-family: 'MS Sans Serif', Arial, sans-serif;
+  font-size: var(--win98-font-size);
+  color: var(--win98-button-text);
+  position: relative;
+}
+
+/* Left content area */
+.win98-status-left {
+  display: flex;
+  align-items: center;
+}
+
+/* Right content area */
+.win98-status-right {
+  display: flex;
+  align-items: center;
+  margin-left: auto;
+}
+
+/* Individual status items */
+.win98-status-item {
+  display: flex;
+  align-items: center;
+  padding: 0 4px;
+  height: 100%;
+  white-space: nowrap;
+}
+
+/* Inset panels on status bar */
+.win98-status-inset {
+  border: inset 1px var(--win98-gray-darker);
+  padding: 1px 4px;
+  margin-right: 4px;
+  display: flex;
+  align-items: center;
+  height: calc(100% - 4px);
+  background-color: var(--win98-gray-lighter);
+  box-shadow: 
+    inset 1px 1px var(--inset-frame-inner-1),
+    inset -1px -1px var(--inset-frame-inner-4);
+}
+
+/* Status icons with text */
+.win98-status-icon-text {
+  display: flex;
+  align-items: center;
+}
+
+/* Progress indicators in status bar */
+.win98-status-progress {
+  height: 12px;
+  width: 100px;
+  border: inset 1px var(--theme-pink);
+  background-color: var(--theme-pink-lightest);
+  box-shadow: var(--inset-shadow);
+  position: relative;
+  overflow: hidden;
+}
+
+.win98-status-progress-bar {
+  height: 100%;
+  background: repeating-linear-gradient(
+    -45deg,
+    var(--win98-gray-darker),
+    var(--win98-gray-darker) 10px,
+    var(--theme-pink) 10px,
+    var(--theme-pink) 20px
+  );
+  animation: progressAnimation 1s linear infinite;
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+}
+
+/* Status dividers */
+.win98-status-divider {
+  width: 1px;
+  height: 14px;
+  background-color: var(--win98-button-shadow);
+  margin: 0 6px;
+  box-shadow: 1px 0 0 var(--win98-button-highlight);
+}
+
+/* =========================== */
+/* ICONS & ASSETS STYLING      */
+/* =========================== */
+
+/* Title bar icons */
+.win98-title-icon {
+  width: 16px !important;
+  height: 16px !important;
+  margin-right: 4px !important;
+  image-rendering: pixelated !important;
+  vertical-align: middle !important;
+}
+
+/* Window control buttons (minimize, maximize, close) */
+.win98-window-button img,
+.button-icon {
+  width: 16px !important;
+  height: 14px !important;
+  display: block !important;
+  image-rendering: pixelated !important;
+  pointer-events: none !important;
+  object-fit: contain !important;
+}
+
+/* Status bar icons */
+.win98-status-item img {
+  width: 16px !important;
+  height: 16px !important;
+  margin-right: 4px !important;
+  image-rendering: pixelated !important;
+  vertical-align: middle !important;
+}
+
+/* Message box and info icons */
+.win98-info img,
+.heybestie-message-content img {
+  width: 16px !important;
+  height: 16px !important;
+  margin-right: 5px !important;
+  vertical-align: middle !important;
+}
+
+/* Radio button icons */
+.win98-radio-icon {
+  width: 12px !important;
+  height: 12px !important;
+  margin-right: 4px !important;
+  vertical-align: middle !important;
+}
+
+/* File input and button icons */
+.input-icon,
+.win98-button-classic img,
+.heybestie-actions button img {
+  width: 16px !important;
+  height: 16px !important;
+  margin-right: 5px !important;
+  vertical-align: middle !important;
+  image-rendering: pixelated !important;
+}
+
+/* Enhancing the folder icon display for file inputs */
+.input-icon {
+  margin-right: 6px !important;
+  vertical-align: text-bottom !important;
+}
+
+/* Fix for icon alignment in buttons */
+.win98-button-classic,
+.heybestie-actions button,
+.custom-file-label {
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+}
+
+/* Ensure all image-based icons have consistent rendering */
+img[src*=".svg"], 
+img[src*=".png"] {
+  image-rendering: pixelated !important;
+  -ms-interpolation-mode: nearest-neighbor !important;
+}
+
+/* =========================== */
+/* FILE UPLOAD STYLING         */
+/* =========================== */
+
+/* Hide the default file input */
+input[type="file"].heybestie-input {
+  width: 0.1px !important;
+  height: 0.1px !important;
+  opacity: 0 !important;
+  overflow: hidden !important;
+  position: absolute !important;
+  z-index: -1 !important;
+}
+
+/* Style the custom file upload button */
+.custom-file-label {
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  cursor: pointer !important;
+  padding: 4px 12px !important;
+  font-family: 'MS Sans Serif', Arial, sans-serif !important;
+  font-size: var(--win98-font-size) !important;
+  color: var(--win98-button-text) !important;
+  background-color: var(--win98-button-face) !important;
+  border: outset 2px var(--win98-gray-darker) !important;
+  box-shadow: 
+    inset 2px 2px var(--btn-frame-inner-1),
+    inset -2px -2px var(--btn-frame-inner-2),
+    inset 1px 1px var(--btn-frame-inner-3),
+    inset -1px -1px var(--btn-frame-inner-4) !important;
+  transition: all 0.05s ease !important;
+  position: relative !important;
+  overflow: hidden !important;
+  min-width: 120px !important;
+  margin: 5px 0 !important;
+}
+
+/* Hover state for file upload button */
+.custom-file-label:hover {
+  color: var(--theme-pink) !important;
+  background-color: var(--win98-gray-lighter) !important;
+}
+
+/* Focus state for better accessibility */
+.custom-file-label:focus {
+  outline: 1px dotted var(--win98-button-text) !important;
+  outline-offset: -3px !important;
+}
+
+/* Active state (pressed) */
+.custom-file-label:active {
+  border: inset 2px var(--win98-gray-darker) !important;
+  padding: 5px 11px 3px 13px !important;
+  box-shadow: 
+    inset 2px 2px var(--inset-frame-inner-1),
+    inset -2px -2px var(--inset-frame-inner-2),
+    inset 1px 1px var(--inset-frame-inner-3),
+    inset -1px -1px var(--inset-frame-inner-4) !important;
+  color: var(--theme-pink) !important;
+}
+
+/* Container for the file input */
+.win98-file-input {
+  margin: 10px auto !important;
+  text-align: center !important;
+}

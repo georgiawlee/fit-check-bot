@@ -1,0 +1,235 @@
+/**
+ * App-Specific Components CSS
+ * Consolidated from:
+ * - heybestie-message.css
+ * - perfect-background.css
+ * - error-boundary.css
+ */
+
+/* =========================== */
+/* BACKGROUND STYLING          */
+/* =========================== */
+
+/* Base document styling */
+html, body {
+  height: 100%;
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+}
+
+/* Create a psuedo-element that will cover the screen */
+body::before {
+  content: '';
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+  
+  /* Apply the background image with a special tiling approach */
+  background: url("../assets/backgrounds/Background-2.png") center center no-repeat;
+  background-size: 100% 100%;
+  
+  /* Apply a subtle filter to minimize perception of stretching */
+  image-rendering: high-quality;
+}
+
+/* Standard backgrounds using same approach */
+.fit-check-bg,
+.page-thumbnail-bg,
+.heybestie-fit-check-bg {
+  position: relative;
+  background: url("../assets/backgrounds/Background-2.png") center center no-repeat !important;
+  background-size: 100% 100% !important;
+}
+
+/* For browsers that support it, use backdrop-filter to further improve quality */
+@supports (backdrop-filter: blur(0)) {
+  body::before {
+    backdrop-filter: blur(0.5px);
+    -webkit-backdrop-filter: blur(0.5px);
+  }
+}
+
+/* For hi-dpi displays, adjust rendering to improve appearance */
+@media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
+  body::before,
+  .fit-check-bg,
+  .page-thumbnail-bg,
+  .heybestie-fit-check-bg {
+    background-size: cover !important;
+  }
+}
+
+/* =========================== */
+/* MESSAGE WINDOW STYLING      */
+/* =========================== */
+
+.heybestie-message-window {
+  z-index: 2;
+}
+
+.heybestie-message-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 12px;
+  height: calc(100% - 32px); /* Subtract titlebar and status bar */
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.heybestie-message-content {
+  width: 100%;
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 12px 15px;
+  font-family: 'MS Sans Serif Bold', 'MS Sans Serif', sans-serif;
+  font-size: 14px;
+  color: var(--win98-button-text);
+  background-color: var(--win98-gray-lighter);
+  border: inset 2px var(--win98-gray-darker);
+  box-shadow: 
+    inset 1px 1px var(--inset-frame-inner-1),
+    inset -1px -1px var(--inset-frame-inner-4);
+  word-break: break-word;
+  overflow-wrap: break-word;
+  line-height: 1.5;
+}
+
+.message-decorative-prefix,
+.message-decorative-suffix {
+  color: var(--theme-pink);
+  font-size: 120%;
+  display: inline-block;
+  margin: 0 3px;
+}
+
+/* =========================== */
+/* ERROR BOUNDARY STYLING      */
+/* =========================== */
+
+/* Windows 98 style error screen */
+.win98-error-screen {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: #008080; /* Windows 98 desktop color */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 9999;
+  font-family: 'MS Sans Serif', Arial, sans-serif;
+}
+
+.win98-error-window {
+  width: 400px;
+  background-color: var(--theme-pink-light);
+  border: 3px solid;
+  border-color: var(--white) var(--theme-pink) var(--theme-pink) var(--white);
+  box-shadow: 1px 1px 0 var(--theme-purple);
+}
+
+.win98-error-titlebar {
+  height: 18px;
+  background: linear-gradient(90deg, var(--theme-gradient-end), var(--theme-pink-dark) 100%);
+  color: var(--white);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 2px 3px;
+  font-weight: bold;
+  font-size: 11px;
+}
+
+.win98-error-title {
+  display: flex;
+  align-items: center;
+}
+
+.win98-error-text {
+  margin-left: 4px;
+}
+
+.win98-error-close {
+  width: 14px;
+  height: 14px;
+  background-color: var(--theme-pink-light);
+  border: 1px solid;
+  border-color: var(--white) var(--theme-pink) var(--theme-pink) var(--white);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 12px;
+  cursor: pointer;
+}
+
+.win98-error-content {
+  padding: 15px;
+  display: flex;
+  align-items: flex-start;
+}
+
+.win98-error-icon {
+  font-size: 32px;
+  margin-right: 15px;
+}
+
+.win98-error-message {
+  flex: 1;
+}
+
+.win98-error-message h3 {
+  margin: 0 0 10px 0;
+  font-size: 13px;
+  font-weight: bold;
+}
+
+.win98-error-message p {
+  margin: 0 0 15px 0;
+  font-size: 12px;
+}
+
+.win98-error-actions {
+  margin-top: 20px;
+  display: flex;
+  justify-content: flex-end;
+}
+
+.win98-error-button {
+  padding: 4px 10px;
+  font-size: 11px;
+  font-family: 'MS Sans Serif', Arial, sans-serif;
+  background-color: var(--theme-pink-light);
+  border: 1px solid;
+  border-color: var(--white) var(--theme-pink) var(--theme-pink) var(--white);
+  box-shadow: 1px 1px 0 var(--theme-purple);
+  cursor: pointer;
+}
+
+.win98-error-button:active {
+  border-color: var(--theme-pink) var(--white) var(--white) var(--theme-pink);
+  box-shadow: inset 1px 1px 0 var(--theme-purple);
+}
+
+details {
+  margin-top: 10px;
+  font-size: 11px;
+  border: 1px solid var(--theme-pink);
+  padding: 5px;
+  background-color: var(--theme-pink-lightest);
+}
+
+summary {
+  font-weight: bold;
+  cursor: pointer;
+}

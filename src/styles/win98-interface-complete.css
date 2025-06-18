@@ -1,0 +1,209 @@
+/**
+ * Windows 98 Interface Controls and Elements
+ * Consolidated from:
+ * - win98-controls-fix.css
+ * - win98-progress.css
+ * - win98-scrollbars.css
+ * - win98-cursors.css
+ * - remove-scrollbars.css
+ * - win98-radio-complete.css
+ */
+
+/* =========================== */
+/* CUSTOM CURSORS              */
+/* =========================== */
+
+/* Default cursor */
+body {
+  cursor: url('../assets/Cursor/Normal.svg'), auto;
+}
+
+/* Pointer cursor for clickable elements */
+button, 
+a, 
+.custom-file-label, 
+.win98-window-button,
+.win98-button-classic,
+.tone-option {
+  cursor: url('../assets/Cursor/Pointer.svg'), pointer !important;
+}
+
+/* Not allowed cursor */
+button:disabled,
+.disabled {
+  cursor: url('../assets/Cursor/Not-allowed.svg'), not-allowed !important;
+}
+
+/* Waiting cursor (for loading states) */
+.is-loading,
+.is-loading * {
+  cursor: url('../assets/Cursor/Waiting.svg'), wait !important;
+}
+
+/* Dragging cursor for window dragging */
+.win98-titlebar {
+  cursor: move;
+  cursor: grab;
+}
+
+.dragging .win98-titlebar {
+  cursor: grabbing;
+}
+
+/* =========================== */
+/* CONTROL GROUPS              */
+/* =========================== */
+
+/* Control group styling is now centralized in design-system-complete.css */
+
+/* Radio option text */
+.win98-radio-option {
+  margin: 1px 0;
+  font-size: var(--regular-font-size);
+  padding: 0 0 0 20px;
+  line-height: var(--regular-line-height);
+  font-family: var(--regular-font-family);
+  position: relative;
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+  font-weight: normal;
+}
+
+/* Radio icon positioning */
+.win98-radio-icon {
+  width: 12px;
+  height: 12px;
+  margin-right: 4px;
+  image-rendering: pixelated;
+  vertical-align: middle;
+  position: absolute;
+  left: 0;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+/* Hide old radio input */
+.win98-radio {
+  display: none;
+}
+
+/* Tone toggle specific styling */
+.tone-toggle button.tone-option {
+  background: transparent;
+  border: none;
+  box-shadow: none;
+  padding: 0;
+  margin: 0;
+  height: calc(var(--win98-line-height) + 1px);
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  min-height: 14px;
+}
+
+.tone-toggle button.tone-option:active,
+.tone-toggle button.tone-option:hover,
+.tone-toggle button.tone-option.active {
+  border: none;
+  box-shadow: none;
+  background-color: transparent;
+  padding: 0;
+}
+
+.tone-toggle button.tone-option:hover .win98-radio-option {
+  color: var(--theme-pink);
+}
+
+.tone-toggle button.tone-option:hover .win98-radio-icon {
+  filter: drop-shadow(0 0 1px var(--theme-pink));
+}
+
+/* =========================== */
+/* PROGRESS BAR                */
+/* =========================== */
+
+.win98-progress-wrapper {
+  width: 100%;
+  padding: 0 10px;
+  box-sizing: border-box;
+  position: absolute;
+  bottom: 24px;
+  left: 0;
+  right: 0;
+  z-index: 20;
+  display: flex;
+  justify-content: center;
+}
+
+.win98-progress {
+  height: 12px;
+  width: 95%;
+  max-width: 500px;
+  border: inset 2px var(--win98-gray-darker);
+  background-color: var(--theme-pink-light);
+  box-shadow: var(--inset-framing-shadow);
+  position: relative;
+  overflow: hidden;
+}
+
+.win98-progress-bar {
+  height: 100%;
+  width: 100%;
+  background: repeating-linear-gradient(
+    -45deg,
+    var(--theme-purple),
+    var(--theme-purple) 10px,
+    var(--theme-pink) 10px,
+    var(--theme-pink) 20px
+  );
+  animation: progressAnimation 1s linear infinite;
+  position: absolute;
+  left: 0;
+  top: 0;
+}
+
+/* =========================== */
+/* SCROLLBARS                  */
+/* =========================== */
+
+/* Hide all scrollbars but maintain functionality */
+* {
+  scrollbar-width: none; /* Firefox */
+  -ms-overflow-style: none; /* IE and Edge */
+}
+
+/* Hide webkit scrollbars (Chrome, Safari, Edge) */
+::-webkit-scrollbar {
+  width: 0 !important;
+  height: 0 !important;
+  display: none !important;
+}
+
+/* Specifically target window content and common scroll containers */
+.win98-window-content,
+.heybestie-controls-container,
+.heybestie-content,
+.heybestie-controls-column {
+  overflow: auto;
+  scrollbar-width: none; /* Firefox */
+  -ms-overflow-style: none; /* IE and Edge */
+}
+
+.win98-window-content::-webkit-scrollbar,
+.heybestie-controls-container::-webkit-scrollbar,
+.heybestie-content::-webkit-scrollbar,
+.heybestie-controls-column::-webkit-scrollbar {
+  width: 0 !important;
+  height: 0 !important;
+  display: none !important;
+}
+
+/* Override any existing scrollbar styles */
+::-webkit-scrollbar-track,
+::-webkit-scrollbar-thumb,
+::-webkit-scrollbar-button,
+::-webkit-scrollbar-corner {
+  display: none !important;
+}

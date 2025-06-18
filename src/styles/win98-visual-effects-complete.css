@@ -1,0 +1,265 @@
+/**
+ * Windows 98 Visual Effects
+ * Consolidated from: 
+ * - shadow-and-icon-improvements.css
+ * - enhanced-responsiveness.css
+ * - win98-animations.css
+ */
+
+/* =========================== */
+/* ANIMATIONS                  */
+/* =========================== */
+
+/* 
+ * Focus dotted outline animation 
+ * Standardized for use across all components (buttons, form controls, etc.)
+ * Animation duration set to var(--animation-speed-slow) for visibility
+ */
+@keyframes focusDotted {
+  0%, 100% {
+    outline-color: var(--theme-purple);
+  }
+  50% {
+    outline-color: transparent;
+  }
+}
+
+/* Progress bar animation 
+ * 
+ * Animation speeds are now aligned between all progress bars:
+ * - win98Progress from win98-progress.css (0.8s)
+ * - progressAnimation in App.css (1s)
+ * 
+ * We've standardized to use var(--animation-speed-normal) multiplier
+ */
+@keyframes progressAnimation {
+  from {
+    background-position: 0 0;
+  }
+  to {
+    background-position: 40px 0;
+  }
+}
+
+/* Window drag animation */
+.dragging {
+  transition: none !important;
+  animation: windowShake var(--animation-speed-fast) ease-in-out;
+}
+
+@keyframes windowShake {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  25% {
+    transform: translateY(1px);
+  }
+  75% {
+    transform: translateY(-1px);
+  }
+}
+
+/* Button click animation */
+.win98-button-classic:active {
+  animation: buttonPress var(--animation-speed-fast) ease-in-out;
+}
+
+@keyframes buttonPress {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(0.98);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+/* Window minimize animation */
+.minimizing {
+  animation: minimizeWindow var(--animation-speed-normal) ease-in-out forwards;
+}
+
+@keyframes minimizeWindow {
+  0% {
+    transform: scale(1);
+    opacity: 1;
+  }
+  100% {
+    transform: scale(0.8);
+    opacity: 0;
+  }
+}
+
+/* Window maximize animation */
+.maximizing {
+  animation: maximizeWindow var(--animation-speed-normal) ease-in-out forwards;
+}
+
+@keyframes maximizeWindow {
+  0% {
+    transform: scale(0.95);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+/* Better animations for dragging windows */
+.dragging .win98-window {
+  transition: none !important; /* Disable transition during drag for smoother movement */
+  opacity: 0.95 !important;
+}
+
+/* =========================== */
+/* SHADOW EFFECTS             */
+/* =========================== */
+
+/* Improved window shadows */
+.win98-window {
+  box-shadow: var(--window-shadow) !important;
+}
+
+/* Enhanced shadow for active window (the one in front) */
+.win98-window:not(.inactive) {
+  box-shadow: var(--elevated-shadow) !important;
+}
+
+/* Improved inset shadows for message boxes and content areas */
+.win98-window-content, 
+.heybestie-message-content,
+.canvas-preview-bg-wrapper,
+.empty-canvas-placeholder {
+  box-shadow: var(--inset-shadow) !important;
+}
+
+/* Enhanced button shadows for a more tactile 3D look */
+.win98-button-classic, 
+.heybestie-actions button, 
+.win98-button,
+.custom-file-label {
+  box-shadow: var(--button-shadow) !important;
+}
+
+/* Pressed button state with proper inset shadow */
+.win98-button-classic:active, 
+.heybestie-actions button:active,
+.win98-button:active,
+.custom-file-label:active {
+  box-shadow: var(--active-shadow) !important;
+}
+
+/* Status bar subtle shadow */
+.win98-status-bar {
+  box-shadow: 
+    inset 0 1px 0 var(--theme-pink),
+    0 -1px 0 var(--white) !important;
+}
+
+/* Add subtle shadow to titlebar */
+.win98-titlebar {
+  box-shadow: 
+    0 1px 2px rgba(255, 112, 224, 0.3),
+    inset 0 1px 0 var(--white) !important;
+}
+
+/* =========================== */
+/* RESPONSIVENESS              */
+/* =========================== */
+
+/* Base responsive improvements */
+.win98-window {
+  max-width: 95vw !important;
+  max-height: 90vh !important;
+  overflow: hidden !important;
+  transition: width var(--animation-speed-normal) ease, height var(--animation-speed-normal) ease !important;
+}
+
+.win98-window-content {
+  overflow: auto !important;
+  height: calc(100% - var(--window-title-height) - 18px) !important; /* Adjust for titlebar and status bar */
+}
+
+/* Control group styling moved to design-system-complete.css */
+
+/* Flexbox layout improvements */
+.win98-flex-row {
+  display: flex !important;
+  flex-direction: row !important;
+  align-items: center !important;
+  flex-wrap: wrap !important;
+  gap: 10px !important;
+  margin-bottom: 10px !important;
+}
+
+.win98-flex-column {
+  display: flex !important;
+  flex-direction: column !important;
+  gap: 10px !important;
+}
+
+/* Form controls spacing */
+input, select, textarea {
+  margin: 5px 0 !important;
+}
+
+/* =========================== */
+/* RESPONSIVE BREAKPOINTS      */
+/* =========================== */
+
+/* Improved responsiveness for desktop */
+@media screen and (min-width: 1024px) {
+  .win98-window {
+    border-width: 3px !important;
+    box-shadow: 4px 4px 16px rgba(255, 112, 224, 0.4) !important;
+  }
+  
+  .win98-titlebar {
+    height: var(--window-title-height, 28px) !important;
+  }
+}
+
+/* Tablet responsiveness */
+@media screen and (max-width: 1023px) {
+  .win98-window {
+    max-width: 96vw !important;
+  }
+  
+  .win98-button, .win98-button-classic {
+    min-height: 30px !important; /* Slightly larger touch targets */
+    padding: 6px 14px !important;
+  }
+}
+
+/* Mobile responsiveness */
+@media screen and (max-width: 767px) {
+  .win98-window {
+    max-width: 98vw !important;
+    max-height: 98vh !important;
+    margin: 0 auto !important;
+    top: 1vh !important; /* Position windows better on mobile */
+    left: 1vw !important;
+  }
+  
+  .win98-titlebar {
+    padding: 3px 8px !important; /* More padding for touch */
+  }
+  
+  .win98-button, .win98-button-classic {
+    min-height: 34px !important; /* Even larger touch targets */
+    padding: 8px 16px !important;
+    width: 100% !important; /* Full width on mobile */
+  }
+  
+  /* Stack buttons on mobile */
+  .win98-flex-row {
+    flex-direction: column !important;
+    align-items: stretch !important;
+  }
+  
+  /* Larger text for better mobile readability */
+  .win98-window-content {
+    font-size: 14px !important;
+  }
+}

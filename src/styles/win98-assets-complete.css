@@ -1,0 +1,157 @@
+/**
+ * Windows 98 Assets and Icon Styling
+ * Consolidated from:
+ * - icon-size-standardization.css
+ * - file-upload-enhancement.css
+ */
+
+/* =========================== */
+/* STANDARDIZED ICON SIZES     */
+/* =========================== */
+
+/* Title bar icons */
+.win98-title-icon {
+  width: 16px !important;
+  height: 16px !important;
+  margin-right: 4px !important;
+  image-rendering: pixelated !important;
+  vertical-align: middle !important;
+}
+
+/* Window control buttons (minimize, maximize, close) */
+.win98-window-button img,
+.button-icon {
+  width: 16px !important;
+  height: 14px !important;
+  display: block !important;
+  image-rendering: pixelated !important;
+  pointer-events: none !important;
+  object-fit: contain !important;
+}
+
+/* Status bar icons */
+.win98-status-item img {
+  width: 16px !important;
+  height: 16px !important;
+  margin-right: 4px !important;
+  image-rendering: pixelated !important;
+  vertical-align: middle !important;
+}
+
+/* Message box and info icons */
+.win98-info img,
+.heybestie-message-content img {
+  width: 16px !important;
+  height: 16px !important;
+  margin-right: 5px !important;
+  vertical-align: middle !important;
+}
+
+/* Radio button icons */
+.win98-radio-icon {
+  width: 12px !important;
+  height: 12px !important;
+  margin-right: 4px !important;
+  vertical-align: middle !important;
+}
+
+/* File input and button icons */
+.input-icon,
+.win98-button-classic img,
+.heybestie-actions button img {
+  width: 16px !important;
+  height: 16px !important;
+  margin-right: 5px !important;
+  vertical-align: middle !important;
+  image-rendering: pixelated !important;
+}
+
+/* Enhancing the folder icon display for file inputs */
+.input-icon {
+  margin-right: 6px !important;
+  vertical-align: text-bottom !important;
+}
+
+/* Fix for icon alignment in buttons */
+.win98-button-classic,
+.heybestie-actions button,
+.custom-file-label {
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+}
+
+/* Ensure all image-based icons have consistent rendering */
+img[src*=".svg"], 
+img[src*=".png"] {
+  image-rendering: pixelated !important;
+  -ms-interpolation-mode: nearest-neighbor !important;
+}
+
+/* =========================== */
+/* FILE UPLOAD STYLING         */
+/* =========================== */
+
+/* Hide the default file input */
+input[type="file"].heybestie-input {
+  width: 0.1px !important;
+  height: 0.1px !important;
+  opacity: 0 !important;
+  overflow: hidden !important;
+  position: absolute !important;
+  z-index: -1 !important;
+}
+
+/* Style the custom file upload button */
+.custom-file-label {
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  cursor: pointer !important;
+  padding: 4px 12px !important;
+  font-family: 'MS Sans Serif', Arial, sans-serif !important;
+  font-size: var(--win98-font-size) !important;
+  color: var(--win98-button-text) !important;
+  background-color: var(--win98-button-face) !important;
+  border: outset 2px var(--win98-gray-darker) !important;
+  box-shadow: 
+    inset 2px 2px var(--btn-frame-inner-1),
+    inset -2px -2px var(--btn-frame-inner-2),
+    inset 1px 1px var(--btn-frame-inner-3),
+    inset -1px -1px var(--btn-frame-inner-4) !important;
+  transition: all 0.05s ease !important;
+  position: relative !important;
+  overflow: hidden !important;
+  min-width: 120px !important;
+  margin: 5px 0 !important;
+}
+
+/* Hover state for file upload button */
+.custom-file-label:hover {
+  color: var(--theme-pink) !important;
+  background-color: var(--win98-gray-lighter) !important;
+}
+
+/* Focus state for better accessibility */
+.custom-file-label:focus {
+  outline: 1px dotted var(--win98-button-text) !important;
+  outline-offset: -3px !important;
+}
+
+/* Active state (pressed) */
+.custom-file-label:active {
+  border: inset 2px var(--win98-gray-darker) !important;
+  padding: 5px 11px 3px 13px !important;
+  box-shadow: 
+    inset 2px 2px var(--inset-frame-inner-1),
+    inset -2px -2px var(--inset-frame-inner-2),
+    inset 1px 1px var(--inset-frame-inner-3),
+    inset -1px -1px var(--inset-frame-inner-4) !important;
+  color: var(--theme-pink) !important;
+}
+
+/* Container for the file input */
+.win98-file-input {
+  margin: 10px auto !important;
+  text-align: center !important;
+}

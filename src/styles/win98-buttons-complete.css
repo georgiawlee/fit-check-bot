@@ -1,0 +1,298 @@
+/* 
+ * win98-buttons-complete.css
+ * Consolidated button styling for Windows 98 theme
+ * 
+ * Combines:
+ * - win98-button-fixes.css (base styling)
+ * - win98-button-authentic-fix.css (window control buttons)
+ * - button-enhancements.css (enhanced visual effects)
+ * - design-system-buttons.css (design system compliant styling)
+ * - App.css button styles (consolidated May 2024)
+ *   - win98-button-classic
+ *   - custom-file-label
+ *   - heybestie-actions button
+ *   - focus animations
+ * 
+ * Note: Radio button and tone toggle styles are now in win98-radio-complete.css
+ */
+
+/* -----------------------------------------------------
+ * 1. BASIC RESET (from win98-button-fixes.css)
+ * ----------------------------------------------------- */
+
+/* Reset unwanted button styling */
+button {
+  appearance: none;
+  -webkit-appearance: none;
+  border-radius: 0;
+  box-sizing: border-box;
+}
+
+/* -----------------------------------------------------
+ * 2. BASE BUTTON STYLING (combining win98-button-fixes.css & design-system-buttons.css)
+ * ----------------------------------------------------- */
+
+/* Standard button styling */
+.win98-button,
+.win98-button-classic,
+.custom-file-label {
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  height: var(--button-height, 23px) !important;
+  min-height: var(--button-height, 23px) !important;
+  padding: 0 10px !important;
+  margin: 2px !important;
+  min-width: 75px !important;
+  
+  /* Box model */
+  box-sizing: border-box !important;
+  border: 2px solid var(--theme-pink-dark) !important;
+  border-style: outset !important;
+  border-radius: 0 !important;
+  
+  /* Visual styling */
+  background-color: var(--theme-pink-light) !important;
+  color: var(--theme-purple) !important;
+  box-shadow: var(--button-framing-shadow) !important;
+  
+  /* Typography */
+  font-family: var(--win98-font-family, 'MS Sans Serif', Arial, sans-serif) !important;
+  font-size: var(--win98-font-size, 11px) !important;
+  font-weight: normal !important;
+  text-align: center !important;
+  white-space: nowrap !important;
+  
+  /* Interaction */
+  cursor: pointer !important;
+  user-select: none !important;
+  position: relative !important;
+  transition: all 0.15s ease-in-out !important;
+}
+
+/* -----------------------------------------------------
+ * 3. THEME VARIATIONS (from design-system-buttons.css & button-enhancements.css)
+ * ----------------------------------------------------- */
+
+/* Pink theme buttons */
+.win98-button.pink-theme,
+.win98-button-classic.pink-theme,
+.custom-file-label.pink-theme {
+  --btn-hover-bg: #FFE5F9;
+  --btn-active-bg: #FFD0F0;
+  
+  background-color: var(--theme-pink-light) !important;
+  border-color: var(--theme-purple) !important;
+  color: var(--theme-purple) !important;
+  font-family: 'MS Sans Serif Bold', sans-serif !important;
+  box-shadow: var(--button-shadow) !important;
+}
+
+/* -----------------------------------------------------
+ * 4. BUTTON STATES (combining all files)
+ * ----------------------------------------------------- */
+
+/* Hover effects */
+.win98-button:hover,
+.win98-button-classic:hover,
+.custom-file-label:hover {
+  background-color: var(--btn-hover-bg, var(--win98-gray-lighter)) !important;
+  border-color: var(--theme-pink-dark, var(--win98-button-shadow)) !important;
+  transform: translateY(-1px) !important;
+  box-shadow: var(--button-shadow), 0 2px 4px rgba(155, 69, 207, 0.15) !important;
+}
+
+/* Active/pressed effects */
+.win98-button:active,
+.win98-button-classic:active,
+.custom-file-label:active {
+  border-style: inset !important;
+  background-color: var(--btn-active-bg, var(--win98-gray)) !important;
+  transform: translateY(0) !important;
+  box-shadow: var(--active-shadow) !important;
+  padding: 5px 11px 3px 9px !important;
+}
+
+/* Focus styles */
+.win98-button:focus,
+.win98-button-classic:focus,
+.custom-file-label:focus {
+  outline: 1px dotted var(--win98-black) !important;
+  outline-offset: -4px !important;
+}
+
+/* Focus animation */
+.win98-focus-animation {
+  position: absolute !important;
+  inset: 3px !important;
+  border: 1px dotted transparent !important;
+  pointer-events: none !important;
+  z-index: 1 !important;
+}
+
+.win98-button:focus .win98-focus-animation,
+.win98-button-classic:focus .win98-focus-animation {
+  border-color: var(--win98-black) !important;
+}
+
+/* Focus-visible animation for native focus support (from App.css) */
+.win98-button-classic:focus-visible .win98-focus-animation {
+  outline: 1px dotted var(--theme-purple-lighter) !important;
+  outline-offset: -5px !important;
+  /* Using the standardized animation from win98-visual-effects-complete.css */
+  animation: focusDotted var(--animation-speed-slow) step-start infinite !important;
+}
+
+/* Disabled state */
+.win98-button:disabled,
+.win98-button-classic:disabled,
+.custom-file-label:disabled {
+  color: var(--win98-gray-darker) !important;
+  text-shadow: 1px 1px 0 var(--win98-white) !important;
+  background-color: var(--win98-gray) !important;
+  border-color: var(--win98-gray) !important;
+  cursor: default !important;
+  pointer-events: none !important;
+}
+
+/* -----------------------------------------------------
+ * 5. WINDOW CONTROL BUTTONS (from win98-button-authentic-fix.css)
+ * ----------------------------------------------------- */
+
+/* Reset any previous button styling to simplify appearance */
+.win98-window-button {
+  /* Remove borders */
+  border: none !important;
+  box-shadow: none !important;
+  background: transparent !important;
+  
+  /* Size to fit the SVG */
+  width: auto !important;
+  height: auto !important;
+  min-width: auto !important;
+  min-height: auto !important;
+  padding: 0 !important;
+  margin: 0 2px !important;
+  
+  /* Center content */
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+}
+
+/* Make the SVG icons themselves the proper size */
+.win98-window-button .button-icon {
+  width: 16px !important;
+  height: 16px !important;
+  display: block !important;
+}
+
+/* Button icons - consolidated from App.css */
+.button-icon {
+  width: 16px !important;
+  height: 14px !important;
+  display: block !important;
+  image-rendering: pixelated !important;
+  pointer-events: none !important;
+  object-fit: contain !important;
+}
+
+.input-icon {
+  width: 16px !important;
+  height: 16px !important;
+  margin-right: 4px !important;
+  image-rendering: pixelated !important;
+}
+
+/* Remove any hover effects from window buttons */
+.win98-window-button:hover,
+.win98-window-button:active {
+  background: transparent !important;
+  box-shadow: none !important;
+  border: none !important;
+  padding: 0 !important;
+  transform: none !important;
+}
+
+/* -----------------------------------------------------
+ * 6. ADDITIONAL STYLING FOR SPECIFIC BUTTONS (from button-enhancements.css)
+ * ----------------------------------------------------- */
+
+/* Radio button and tone toggle styles - MOVED to win98-radio-complete.css */
+/* All radio-related styles have been moved to win98-radio-complete.css */
+
+/* File upload label styling */
+.custom-file-label {
+  display: inline-flex !important;
+  cursor: pointer !important;
+  /* Additional custom file label styles consolidated from App.css */
+  align-items: center !important;
+  justify-content: center !important;
+  margin-bottom: 0 !important;
+  min-width: 120px !important;
+  width: clamp(120px, 80%, 180px) !important;
+  max-width: 100% !important;
+  height: 24px !important;
+  text-align: center !important;
+  position: relative !important;
+  white-space: nowrap !important;
+  text-overflow: ellipsis !important;
+  font-weight: bold !important;
+  padding: 0 8px !important;
+}
+
+/* File input (hidden) */
+input[type="file"].heybestie-input {
+  position: absolute !important;
+  width: 0.1px !important;
+  height: 0.1px !important;
+  opacity: 0 !important;
+  overflow: hidden !important;
+  z-index: -1 !important;
+}
+
+/* -----------------------------------------------------
+ * 7. ACTION BUTTON STYLES (from App.css)
+ * ----------------------------------------------------- */
+
+/* Action buttons (consolidated from App.css) */
+.heybestie-actions button, 
+.actions button {
+  min-width: 75px !important;
+  max-width: 100% !important;
+  width: fit-content !important;
+  height: 23px !important;
+  padding: 0 8px !important;
+  font-size: var(--win98-font-size) !important;
+  font-family: 'MS Sans Serif', sans-serif !important;
+  color: var(--win98-button-text) !important;
+  border: outset 2px var(--win98-gray-darker) !important;
+  background-color: var(--win98-button-face) !important;
+  box-shadow: 
+    inset 2px 2px var(--btn-frame-inner-1),
+    inset -2px -2px var(--btn-frame-inner-2),
+    inset 1px 1px var(--btn-frame-inner-3),
+    inset -1px -1px var(--btn-frame-inner-4) !important;
+  text-align: center !important;
+  cursor: pointer !important;
+  image-rendering: pixelated !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  position: relative !important;
+  overflow: hidden !important;
+  white-space: nowrap !important;
+  text-overflow: ellipsis !important;
+  font-weight: bold !important;
+}
+
+/* Action buttons disabled state */
+.heybestie-actions button:disabled, 
+.actions button:disabled {
+  color: rgba(155, 69, 207, 0.5) !important;
+  background-color: var(--win98-gray-lighter) !important;
+  border-color: var(--win98-gray-light) !important;
+  box-shadow: none !important;
+  cursor: not-allowed !important;
+  opacity: 0.7 !important;
+}

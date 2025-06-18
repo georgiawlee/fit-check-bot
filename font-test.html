@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Message Box Font Test</title>
+  <link rel="stylesheet" href="/src/styles/main-styles.css">
+  <style>
+    body {
+      padding: 20px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 20px;
+    }
+    .test-container {
+      width: 80%;
+      max-width: 800px;
+      padding: 20px;
+      background-color: white;
+      border: 2px solid #FF70E0;
+      margin-bottom: 30px;
+    }
+    h1 {
+      text-align: center;
+    }
+    .spicy-rice {
+      font-family: 'Spicy Rice', cursive;
+    }
+    .ms-sans-serif {
+      font-family: 'MS Sans Serif', Arial, sans-serif;
+    }
+    .font-sample {
+      margin: 10px 0;
+      padding: 10px;
+      border: 1px solid #ddd;
+    }
+  </style>
+</head>
+<body>
+  <h1>Message Box Font Test</h1>
+  
+  <div class="test-container">
+    <h2>Font Samples</h2>
+    <div class="font-sample spicy-rice">
+      This text uses Spicy Rice font (should look decorative)
+    </div>
+    <div class="font-sample ms-sans-serif">
+      This text uses MS Sans Serif font (should look like Windows 98)
+    </div>
+    
+    <h2>Default Body Text</h2>
+    <div class="font-sample">
+      This is default body text (should use MS Sans Serif now)
+    </div>
+  </div>
+  
+  <div class="test-container">
+    <h2>Message Box Test</h2>
+    <div class="win98-message-box">
+      <div class="win98-message-box-header">
+        <img src="/src/assets/icons/Information.svg" alt="Info">
+        Message Box Title
+      </div>
+      <div class="win98-message-content">
+        This text should be using MS Sans Serif font, not Spicy Rice.
+        Check that it appears with the correct Windows 98 system font.
+      </div>
+    </div>
+  </div>
+
+  <div class="test-container">
+    <h2>Component Test</h2>
+    <button class="win98-button-classic">Standard Button</button>
+    <div style="margin-top: 10px;">
+      <label class="win98-control-group-title">Example Input:</label>
+      <input type="text" class="win98-input win98-styled" value="Text input with MS Sans Serif">
+    </div>
+  </div>
+</body>
+</html>

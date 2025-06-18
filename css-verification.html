@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Windows 98 CSS Verification</title>
+    <link rel="stylesheet" href="/src/styles/main-styles.css">
+    <style>
+      body {
+        font-family: 'MS Sans Serif', Arial, sans-serif;
+        padding: 20px;
+        background-color: #FFDFF8;
+      }
+      
+      .test-container {
+        max-width: 800px;
+        margin: 0 auto;
+        background-color: #FFEDFB;
+        padding: 20px;
+        border: 3px solid #FF70E0;
+        border-style: outset;
+        box-shadow: 
+          inset -1px -1px #FF70E0,
+          inset 1px 1px #FFDFF8,
+          2px 2px 4px rgba(255, 112, 224, 0.2);
+      }
+      
+      .section {
+        margin-bottom: 30px;
+        padding: 15px;
+        border: 1px solid #FF70E0;
+      }
+      
+      .button-row {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 10px;
+        margin-bottom: 15px;
+      }
+      
+      .form-row {
+        margin-bottom: 15px;
+      }
+      
+      h1, h2 {
+        color: #C76CEF;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="test-container">
+      <h1>Windows 98 CSS Verification</h1>
+      
+      <!-- Button Section -->
+      <div class="section">
+        <h2>Button Styles</h2>
+        <div class="button-row">
+          <button class="win98-button-classic">Standard Button</button>
+          <button class="win98-button-primary">Primary Button</button>
+          <button class="win98-button-secondary">Secondary Button</button>
+          <button class="win98-button-classic" disabled>Disabled Button</button>
+        </div>
+      </div>
+      
+      <!-- Radio Button Section -->
+      <div class="section">
+        <h2>Radio Controls</h2>
+        
+        <div class="tone-toggle win98-control-group">
+          <div class="win98-control-group-title">Radio Style 1 (Toggle)</div>
+          <button class="tone-option active">
+            <div class="win98-radio-option">
+              <img src="/src/assets/Radio Box/Selected.svg" alt="Selected" class="win98-radio-icon">
+              Option 1 (Selected)
+            </div>
+          </button>
+          <button class="tone-option">
+            <div class="win98-radio-option">
+              <img src="/src/assets/Radio Box/Unselected.svg" alt="Unselected" class="win98-radio-icon">
+              Option 2
+            </div>
+          </button>
+          <button class="tone-option">
+            <div class="win98-radio-option">
+              <img src="/src/assets/Radio Box/Unselected.svg" alt="Unselected" class="win98-radio-icon">
+              Option 3
+            </div>
+          </button>
+        </div>
+        
+        <div style="margin-top: 20px;">
+          <div class="win98-control-group-title">Radio Style 2 (Button-Like)</div>
+          <button class="tone-option" style="width: auto; margin: 5px;">
+            <div class="win98-radio-option">Option A</div>
+          </button>
+          <button class="tone-option" style="width: auto; margin: 5px;">
+            <div class="win98-radio-option">Option B</div>
+          </button>
+        </div>
+      </div>
+      
+      <!-- Form Elements -->
+      <div class="section">
+        <h2>Form Elements</h2>
+        <div class="form-row">
+          <label class="win98-form-label">Text Input:</label>
+          <input type="text" class="win98-form-input" placeholder="Enter text...">
+        </div>
+        
+        <div class="form-row">
+          <label class="win98-form-label">
+            <input type="checkbox" class="win98-checkbox">
+            Checkbox Option
+          </label>
+        </div>
+        
+        <div class="form-row">
+          <label class="win98-form-label">Select Dropdown:</label>
+          <select class="win98-form-select">
+            <option>Option 1</option>
+            <option>Option 2</option>
+            <option>Option 3</option>
+          </select>
+        </div>
+        
+        <div class="win98-file-input">
+          <label class="custom-file-label">
+            <span>Choose File</span>
+            <input type="file" class="heybestie-input">
+          </label>
+        </div>
+      </div>
+      
+      <!-- Progress Bar -->
+      <div class="section">
+        <h2>Progress Bar</h2>
+        <div class="win98-progress-wrapper" style="position: relative;">
+          <div class="win98-progress">
+            <div class="win98-progress-bar" style="width: 65%"></div>
+          </div>
+        </div>
+      </div>
+      
+      <!-- Message Box -->
+      <div class="section">
+        <h2>Message Box with MS Sans Serif Font</h2>
+        <p style="margin-bottom: 15px; font-style: italic;">Updated May 27, 2025: Direct font specification rather than variables to ensure authentic Windows 98 appearance.</p>
+        <div class="win98-message-box">
+          <div class="win98-message-box-header">
+            Message Box Header - MS Sans Serif Bold
+          </div>
+          <div class="comment-text heybestie-comment">
+            This message box text is using the MS Sans Serif font.<br>
+            The font is now explicitly set to 'MS Sans Serif' rather than using CSS variables, maintaining the authentic Windows 98 look.
+          </div>
+        </div>
+      </div>
+      
+      <!-- Status Bar -->
+      <div class="win98-status-bar" style="margin-top: 20px;">
+        <div class="win98-status-item">CSS Test Complete</div>
+        <div class="win98-status-separator"></div>
+        <div class="win98-status-item">May 27, 2025</div>
+      </div>
+    </div>
+  </body>
+</html>

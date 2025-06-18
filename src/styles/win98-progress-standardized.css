@@ -1,0 +1,221 @@
+/* 
+ * win98-progress-standardized.css
+ * Standardized progress bar styling for Windows 98 theme
+ * 
+ * This file consolidates all progress bar styles from:
+ * - App.css
+ * - win98-progress.css
+ * - win98-visual-effects-complete.css
+ * 
+ * CREATED: May 23, 2025
+ */
+
+/* -----------------------------------------------------
+ * 1. PROGRESS BAR TOKENS
+ * ----------------------------------------------------- */
+
+:root {
+  /* Progress bar dimensions */
+  --progress-height: 16px;
+  --progress-compact-height: 12px;
+  --progress-border-width: 1px;
+  --progress-border-width-inset: 2px;
+  
+  /* Progress bar animations */
+  --progress-animation-speed: var(--animation-speed-normal);
+  --progress-stripes-width: 20px;
+  --progress-stripes-angle: -45deg;
+  
+  /* Progress bar colors */
+  --progress-bg: var(--theme-pink-lightest);
+  --progress-border: var(--theme-pink);
+  --progress-stripe-color-1: var(--theme-pink);
+  --progress-stripe-color-2: var(--theme-pink-dark);
+  
+  /* Progress bar status colors */
+  --progress-success-color-1: #6ae070;
+  --progress-success-color-2: #2ca336;
+  --progress-error-color-1: #ff7070;
+  --progress-error-color-2: #d42f2f;
+}
+
+/* -----------------------------------------------------
+ * 2. PROGRESS BAR ANIMATIONS
+ * ----------------------------------------------------- */
+
+/* Standard progress animation for all progress bars */
+@keyframes progressAnimation {
+  from {
+    background-position: 0 0;
+  }
+  to {
+    background-position: var(--progress-stripes-width) * 2 0;
+  }
+}
+
+/* -----------------------------------------------------
+ * 3. STANDARD PROGRESS BAR
+ * ----------------------------------------------------- */
+
+/* Progress wrapper - container for positioning */
+.win98-progress-wrapper {
+  width: 100%;
+  padding: 0 10px;
+  box-sizing: border-box;
+  display: flex;
+  justify-content: center;
+  margin: 5px 0;
+}
+
+/* Fixed position wrapper variation */
+.win98-progress-wrapper.fixed-bottom {
+  position: absolute;
+  bottom: 24px;
+  left: 0;
+  right: 0;
+  z-index: 20;
+}
+
+/* Progress container - the outer border and frame */
+.win98-progress-container {
+  width: 100%;
+  max-width: 500px;
+  height: var(--progress-height);
+  background-color: var(--progress-bg);
+  border: var(--progress-border-width) solid;
+  border-top-color: var(--theme-purple);
+  border-left-color: var(--theme-purple);
+  border-right-color: var(--white);
+  border-bottom-color: var(--white);
+  box-shadow: var(--inset-shadow);
+  position: relative;
+  overflow: hidden;
+}
+
+/* Inset variation */
+.win98-progress-container.inset {
+  border: inset var(--progress-border-width-inset) var(--progress-border);
+}
+
+/* Compact variation */
+.win98-progress-container.compact {
+  height: var(--progress-compact-height);
+}
+
+/* Legacy class for backwards compatibility */
+.win98-progress {
+  composes: win98-progress-container;
+}
+
+/* -----------------------------------------------------
+ * 4. PROGRESS BAR INDICATOR
+ * ----------------------------------------------------- */
+
+/* Progress bar - the animated part */
+.win98-progress-bar {
+  height: 100%;
+  width: 100%;
+  background: repeating-linear-gradient(
+    var(--progress-stripes-angle),
+    var(--progress-stripe-color-1),
+    var(--progress-stripe-color-1) 10px,
+    var(--progress-stripe-color-2) 10px,
+    var(--progress-stripe-color-2) 20px
+  );
+  background-size: var(--progress-stripes-width) * 2 100%;
+  animation: progressAnimation var(--progress-animation-speed) linear infinite;
+  position: absolute;
+  left: 0;
+  top: 0;
+}
+
+/* Determinate progress bar */
+.win98-progress-determinate .win98-progress-bar {
+  width: 0%; /* Set dynamically with JS */
+  animation: none;
+}
+
+/* Success state */
+.win98-progress-success .win98-progress-bar {
+  background: repeating-linear-gradient(
+    var(--progress-stripes-angle),
+    var(--progress-success-color-1),
+    var(--progress-success-color-1) 10px,
+    var(--progress-success-color-2) 10px,
+    var(--progress-success-color-2) 20px
+  );
+}
+
+/* Error state */
+.win98-progress-error .win98-progress-bar {
+  background: repeating-linear-gradient(
+    var(--progress-stripes-angle),
+    var(--progress-error-color-1),
+    var(--progress-error-color-1) 10px,
+    var(--progress-error-color-2) 10px,
+    var(--progress-error-color-2) 20px
+  );
+}
+
+/* -----------------------------------------------------
+ * 5. PROGRESS TEXT AND LABELS
+ * ----------------------------------------------------- */
+
+/* Progress text overlay */
+.win98-progress-text {
+  position: absolute;
+  top: 50%;
+  left: 0;
+  right: 0;
+  transform: translateY(-50%);
+  text-align: center;
+  font-family: var(--win98-font-family);
+  font-size: 11px;
+  color: var(--win98-button-text);
+  mix-blend-mode: difference;
+  text-shadow: 1px 1px 0 rgba(255, 255, 255, 0.7);
+  pointer-events: none;
+  z-index: 1;
+}
+
+/* Progress label */
+.win98-progress-label {
+  display: block;
+  margin-bottom: 3px;
+  font-family: var(--win98-font-family);
+  font-size: var(--win98-font-size);
+  color: var(--win98-button-text);
+}
+
+/* -----------------------------------------------------
+ * 6. PROGRESS BAR VARIANTS
+ * ----------------------------------------------------- */
+
+/* Status bar progress indicator (small) */
+.win98-status-progress {
+  height: 12px;
+  width: 100px;
+  border: inset 1px var(--theme-pink);
+  background-color: var(--theme-pink-lightest);
+  box-shadow: var(--inset-shadow);
+  position: relative;
+  overflow: hidden;
+  display: inline-block;
+  vertical-align: middle;
+}
+
+.win98-status-progress-bar {
+  height: 100%;
+  background: repeating-linear-gradient(
+    -45deg,
+    var(--win98-gray-darker),
+    var(--win98-gray-darker) 10px,
+    var(--theme-pink) 10px,
+    var(--theme-pink) 20px
+  );
+  animation: progressAnimation var(--progress-animation-speed) linear infinite;
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+}

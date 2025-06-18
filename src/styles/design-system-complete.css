@@ -1,0 +1,361 @@
+/* 
+ * design-system-complete.css
+ * Consolidated design system for Windows 98 pink theme
+ * 
+ * Combines:
+ * - design-tokens.css (CSS variables)
+ * - design-system-compliant.css (design system styling)
+ * - final-design-system-fix.css (additional fixes)
+ */
+
+/* -----------------------------------------------------
+ * 1. DESIGN TOKENS / CSS VARIABLES
+ * ----------------------------------------------------- */
+
+:root {
+  /* 
+   * CORE COLOR TOKENS
+   * Primary colors that form the foundation of the design system
+   */
+  --white: #FFFFFF;  /* Used for highlights, text on dark backgrounds */
+  
+  /* 
+   * THEME COLOR TOKENS 
+   * Main colors for the Windows 98 pink theme
+   */
+  --theme-pink: #FF70E0;         /* Primary pink - for buttons, borders */
+  --theme-pink-dark: #FF45B5;    /* Darker pink - for active states, shadows */
+  --theme-pink-light: #FFDFF8;   /* Light pink - for backgrounds, inactive elements */
+  --theme-pink-lightest: #FFEDFB; /* Lightest pink - for subtle backgrounds, panels */
+  
+  /* Purple palette */
+  --theme-purple: #C76CEF;       /* Primary purple - for text, accents */
+  --theme-purple-lighter: #9B45CF; /* Lighter purple - for borders, highlights */
+  
+  /* Gradient colors */
+  --theme-gradient-start: #FFAEED; /* Start color for titlebar gradients */
+  --theme-gradient-end: #FF2FD1;   /* End color for titlebar gradients */
+  
+  /* Supporting colors */
+  --pink-medium: #ffa0ea;        /* Medium pink - for inner shadows, highlights */
+  --pink-light: #ffc5f2;         /* Light pink - for subtle highlights */
+  --pink-hot: #ff00a4;           /* Hot pink - for active highlights */
+  
+  /* 
+   * SHADOW EFFECTS
+   * Standardized shadow tokens for consistent visual effects across the entire UI
+   */
+
+  /* Base Shadow Effects - Exactly matching effect.styles.tokens.json */
+  --window-framing-shadow: 
+    inset 2px 2px 0px 0px var(--white),
+    inset -2px -2px 0px 0px var(--pink-medium),
+    inset 1px 1px 0px 0px var(--pink-light),
+    inset -1px -1px 0px 0px var(--pink-hot);
+  
+  --button-framing-shadow: 
+    inset 2px 2px 0px 0px var(--pink-light),
+    inset -2px -2px 0px 0px var(--pink-medium),
+    inset 1px 1px 0px 0px var(--white),
+    inset -1px -1px 0px 0px var(--theme-purple-lighter);
+  
+  --inset-framing-shadow: 
+    inset 2px 2px 0px 0px var(--theme-purple-lighter),
+    inset -2px -2px 0px 0px var(--pink-light),
+    inset 1px 1px 0px 0px var(--pink-medium),
+    inset -1px -1px 0px 0px var(--white);
+  
+  --inactive-shadow: 1px 1px 0px 0px var(--white);
+  
+  /* Semantic Shadow Variables (for better readability and consistency) */
+  --window-shadow: var(--window-framing-shadow);            /* For window framing */
+  --button-shadow: var(--button-framing-shadow);            /* For button framing */
+  --inset-shadow: var(--inset-framing-shadow);              /* For inset elements */
+  --inactive-window-shadow: var(--inactive-shadow);         /* For inactive windows */
+  --hover-shadow: 0 0 0 1px var(--theme-purple);            /* For hover states */
+  --focus-shadow: 0 0 0 1px var(--theme-purple-lighter);    /* For focus states */
+  --active-shadow: var(--inset-framing-shadow);             /* For active/pressed states */
+  --dropdown-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2);        /* For dropdowns/popups */
+  --tooltip-shadow: 1px 1px 3px rgba(0, 0, 0, 0.3);         /* For tooltips */
+
+  /* Effect combinations */
+  --dragging-shadow: var(--window-framing-shadow), 4px 4px 12px var(--theme-pink-dark); /* For dragged windows */
+  --elevated-shadow: var(--window-framing-shadow), 3px 3px 10px rgba(255, 112, 224, 0.4); /* For elevated elements */
+  
+  /* Border Frame Variables - Using pink theme colors */
+  --btn-frame-inner-1: #ffffff;
+  --btn-frame-inner-2: var(--pink-medium);
+  --btn-frame-inner-3: var(--pink-light);
+  --btn-frame-inner-4: var(--pink-hot);
+  --inset-frame-inner-1: var(--theme-purple);
+  --inset-frame-inner-2: #ffffff;
+  --inset-frame-inner-3: var(--pink-hot);
+  --inset-frame-inner-4: var(--pink-light);
+  
+  /* Typography - From text.styles.tokens.json */
+  --regular-font-family: 'MS Sans Serif', Arial, sans-serif;
+  --regular-font-size: 11px;
+  --regular-font-weight: 400;
+  --regular-line-height: 12px;
+  --regular-letter-spacing: 0%;
+  
+  --bold-font-family: 'MS Sans Serif Bold', 'MS Sans Serif', Arial, sans-serif;
+  --bold-font-size: 11px;
+  --bold-font-weight: 400;
+  --bold-line-height: normal;
+  --bold-letter-spacing: 0%;
+  
+  /* Legacy typography variables for backward compatibility */
+  --win98-font-size: 11px;
+  --win98-line-height: 12px;
+  --win98-font-family: 'MS Sans Serif', Arial, sans-serif;
+  --win98-font-family-bold: 'MS Sans Serif Bold', 'MS Sans Serif', Arial, sans-serif;
+  
+  /* Animation Speeds */
+  --animation-speed-fast: 0.1s;
+  --animation-speed-normal: 0.2s;
+  --animation-speed-slow: 0.3s;
+  
+  /* Special Effects - Using the defined shadow variables */
+  /* These provide consistent shortcuts for the most common use cases */
+  --inset-shadow: var(--inset-framing-shadow);
+  --window-shadow: var(--window-framing-shadow);
+  --button-shadow: var(--button-framing-shadow);
+  
+  /* Component Specific */
+  --titlebar-height: 24px;
+  --window-title-height: 24px;
+}
+
+/* -----------------------------------------------------
+ * 2. BASE WINDOW STYLING
+ * ----------------------------------------------------- */
+
+/* Title bar styling */
+.win98-titlebar {
+  height: var(--titlebar-height) !important;
+  padding: 2px 4px !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: space-between !important;
+  background: linear-gradient(90deg, var(--theme-gradient-start), var(--theme-gradient-end)) !important;
+  box-sizing: border-box !important;
+  cursor: move !important;
+  user-select: none !important;
+  margin: 0 !important;
+  position: relative !important;
+  z-index: 2 !important;
+}
+
+/* Window root structure */
+.win98-window {
+  display: flex !important;
+  flex-direction: column !important;
+  background-color: var(--theme-pink) !important;
+  border: 2px solid var(--theme-purple) !important;
+  box-shadow: var(--window-framing-shadow) !important;
+  overflow: hidden !important;
+  position: absolute !important;
+}
+
+/* Window title bar components */
+.win98-window-title {
+  display: flex !important;
+  align-items: center !important;
+  height: 100% !important;
+  color: var(--white) !important;
+  position: relative !important;
+  z-index: 3 !important;
+  flex: 1 !important;
+  max-width: calc(100% - 60px) !important;
+  overflow: hidden !important;
+}
+
+.win98-title-text {
+  color: var(--white) !important;
+  font-family: var(--bold-font-family) !important;
+  font-size: var(--bold-font-size) !important;
+  font-weight: var(--bold-font-weight) !important;
+  line-height: var(--bold-line-height) !important;
+  letter-spacing: var(--bold-letter-spacing) !important;
+  white-space: nowrap !important;
+  overflow: hidden !important;
+  text-overflow: ellipsis !important;
+}
+
+/* Window content area */
+.win98-window-content {
+  display: block !important;
+  flex: 1 !important;
+  background-color: var(--theme-pink-light) !important;
+  padding: 10px !important;
+  overflow: auto !important;
+  position: relative !important;
+}
+
+/* Inactive window styling */
+.win98-window.inactive .win98-titlebar {
+  background: linear-gradient(90deg, var(--pink-light), var(--pink-medium)) !important;
+  opacity: 0.95 !important;
+}
+
+/* -----------------------------------------------------
+ * 3. CONTROL GROUP STYLING
+ * ----------------------------------------------------- */
+
+.win98-control-group,
+.tone-toggle,
+.heybestie-tone-toggle {
+  position: relative !important;
+  padding: 8px 12px 6px !important;
+  margin: 10px 0 !important;
+  border: inset 2px var(--theme-pink) !important;
+  box-shadow: var(--inset-shadow) !important;
+  background-color: var(--theme-pink-light) !important;
+  width: 90% !important;
+  max-width: 220px !important;
+  box-sizing: border-box !important;
+  display: flex !important;
+  flex-direction: column !important;
+  align-items: flex-start !important;
+}
+
+.win98-control-group-title {
+  position: absolute !important;
+  top: -5px !important;
+  left: 6px !important;
+  background-color: var(--theme-pink-light) !important;
+  padding: 0 4px !important;
+  color: var(--theme-purple) !important;
+  font-size: calc(var(--regular-font-size) - 1px) !important;
+  font-family: var(--bold-font-family) !important;
+  font-weight: bold !important;
+  line-height: 1 !important;
+  z-index: 1 !important;
+}
+
+/* -----------------------------------------------------
+ * 4. FORM CONTROLS
+ * ----------------------------------------------------- */
+
+/* Radio button styling */
+.win98-radio-option {
+  display: flex !important;
+  align-items: center !important;
+  margin: 4px 0 !important;
+  color: var(--theme-purple) !important;
+}
+
+.win98-radio-icon {
+  width: 13px !important;
+  height: 13px !important;
+  margin-right: 5px !important;
+}
+
+.win98-radio-label {
+  font-family: var(--win98-font-family) !important;
+  font-size: var(--win98-font-size) !important;
+  color: var(--theme-purple) !important;
+}
+
+/* File input styling */
+.win98-file-input {
+  margin: 10px auto !important;
+  display: flex !important;
+  justify-content: center !important;
+}
+
+.win98-file-input .custom-file-label {
+  width: 140px !important;
+}
+
+.win98-file-input .input-icon {
+  width: 16px !important;
+  height: 16px !important;
+  margin-right: 5px !important;
+}
+
+/* Text input styling */
+.win98-input {
+  border: 1px solid var(--theme-pink-dark) !important;
+  background-color: var(--white) !important;
+  padding: 2px 5px !important;
+  font-family: var(--regular-font-family) !important;
+  font-size: var(--regular-font-size) !important;
+  color: var(--theme-purple) !important;
+  outline: none !important;
+}
+
+.win98-input:focus {
+  border-color: var(--theme-purple) !important;
+}
+
+/* -----------------------------------------------------
+ * 5. MESSAGES AND ALERTS
+ * ----------------------------------------------------- */
+
+.win98-message {
+  padding: 8px !important;
+  margin: 8px 0 !important;
+  border: 1px solid var(--theme-pink) !important;
+  background-color: var(--theme-pink-light) !important;
+  color: var(--theme-purple) !important;
+  font-family: var(--win98-font-family) !important;
+  font-size: var(--win98-font-size) !important;
+}
+
+.win98-alert {
+  display: flex !important;
+  align-items: center !important;
+}
+
+.win98-alert-icon {
+  width: 20px !important;
+  height: 20px !important;
+  margin-right: 8px !important;
+}
+
+/* -----------------------------------------------------
+ * 6. LAYOUT HELPERS
+ * ----------------------------------------------------- */
+
+.win98-row {
+  display: flex !important;
+  align-items: center !important;
+  margin: 5px 0 !important;
+}
+
+.win98-column {
+  display: flex !important;
+  flex-direction: column !important;
+  margin: 0 5px !important;
+}
+
+.win98-spacer {
+  height: 5px !important;
+}
+
+/* -----------------------------------------------------
+ * 7. STATUS BAR
+ * ----------------------------------------------------- */
+
+.win98-status-bar {
+  display: flex !important;
+  align-items: center !important;
+  padding: 2px 5px !important;
+  background-color: var(--theme-pink-light) !important;
+  border-top: 1px solid var(--theme-pink) !important;
+  font-family: var(--win98-font-family) !important;
+  font-size: var(--win98-font-size) !important;
+  color: var(--theme-purple) !important;
+}
+
+.win98-status-section {
+  border-right: 1px solid var(--theme-pink) !important;
+  padding: 0 5px !important;
+  margin-right: 5px !important;
+}
+
+.win98-status-section:last-child {
+  border-right: none !important;
+}

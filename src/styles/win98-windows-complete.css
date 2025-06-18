@@ -1,0 +1,348 @@
+/* 
+ * win98-windows-complete.css
+ * Consolidated window styling for Windows 98 theme
+ * 
+ * Combines:
+ * - win98-window-improvements.css (base window styling)
+ * - window-screen-enhancements.css (enhanced window appearance)
+ * - window-opacity-fix.css (ensures windows aren't transparent)
+ * - separate-windows.css (window positioning and sizing)
+ * - window-visibility-emergency.css (ensures windows are visible)
+ * - title-bar-gradient-fix.css (title bar gradient styling)
+ * - win98-titlebar-enhancements.css (enhanced title bar styling)
+ * - titlebar-button-border-fix.css (title bar button styling)
+ * - App.css window styles (redundant window styling from App.css)
+ * 
+ * UPDATED: May 23, 2025
+ * - Consolidated all window styles from App.css
+ * - Added window button interaction styles
+ * - Added responsive layout styles for windows
+ * - Added consistent window box-shadow and border styling
+ */
+
+/* -----------------------------------------------------
+ * 1. ROOT VARIABLES
+ * ----------------------------------------------------- */
+
+:root {
+  /* Theme colors */
+  --theme-gradient-start: #FF2FD1; /* Darker pink */
+  --theme-gradient-end: #FFAEED;   /* Lighter pink */
+  --window-title-height: 28px;     /* Title bar height */
+  
+  /* Referencing design system tokens instead of defining local values */
+  /* These values should be imported from design-system-complete.css */
+  
+  /* Shadow tokens - Using centralized tokens from design-system-complete.css */
+  /* Remove these local definitions when all files are updated to use the
+     central design system tokens */
+}
+
+/* -----------------------------------------------------
+ * 2. BASE WINDOW STYLING
+ * ----------------------------------------------------- */
+
+/* Base window styling */
+.win98-window {
+  /* Display and structure */
+  display: flex !important;
+  flex-direction: column !important;
+  visibility: visible !important;
+  position: fixed !important;
+  overflow: visible !important;
+  
+  /* Dimensions */
+  min-width: 300px !important;
+  min-height: 200px !important;
+  
+  /* Visual styling */
+  background-color: var(--theme-pink-light) !important;
+  border: 3px solid var(--theme-pink) !important;
+  border-style: outset !important;
+  box-shadow: var(--window-shadow) !important;
+  border-radius: 1px !important; /* Very slight rounding */
+  
+  /* Interaction */
+  opacity: 1 !important;
+  z-index: 9999 !important;
+  pointer-events: auto !important;
+  
+  /* Transitions */
+  transition: all var(--animation-speed-normal) ease;
+}
+
+/* Inactive window styling */
+.win98-window.inactive {
+  opacity: 1 !important; /* Keep fully opaque */
+  filter: saturate(0.95) brightness(0.98) !important; /* Subtle visual difference */
+  box-shadow: var(--inactive-window-shadow) !important;
+}
+
+/* Dragging effect */
+.win98-window.dragging {
+  opacity: 0.9 !important;
+  box-shadow: var(--dragging-shadow) !important;
+  transition: none !important;
+}
+
+/* -----------------------------------------------------
+ * 3. TITLE BAR STYLING
+ * ----------------------------------------------------- */
+
+/* Enhanced title bar with better alignment */
+.win98-titlebar {
+  /* Layout */
+  display: flex !important;
+  align-items: center !important;
+  justify-content: space-between !important;
+  height: var(--window-title-height) !important;
+  width: 100% !important;
+  padding: 2px 8px !important;
+  box-sizing: border-box !important;
+  
+  /* Visual styling */
+  background: linear-gradient(90deg, var(--theme-gradient-start), var(--theme-gradient-end)) !important;
+  border-bottom: 1px solid var(--win98-gray-darker) !important;
+  
+  /* Interaction */
+  cursor: move !important;
+  user-select: none !important;
+  z-index: 10000 !important;
+  visibility: visible !important;
+  opacity: 1 !important;
+  pointer-events: auto !important;
+}
+
+/* Inactive titlebar styling */
+.win98-window.inactive .win98-titlebar {
+  opacity: 1 !important;
+  /* Using theme colors with opacity for consistent color scheme */
+  background: linear-gradient(90deg, 
+    var(--theme-purple-lighter), 
+    var(--theme-pink-light)) !important; 
+  filter: saturate(0.9) !important; /* Slightly desaturated */
+}
+
+/* -----------------------------------------------------
+ * 4. WINDOW TITLE TEXT
+ * ----------------------------------------------------- */
+
+/* Window title container */
+.win98-window-title {
+  display: flex !important;
+  align-items: center !important;
+  height: 100% !important;
+  color: #fff !important;
+  letter-spacing: 0.5px !important;
+  text-shadow: 2px 2px 3px var(--theme-purple-lighter), 1px 1px 2px rgba(0,0,0,0.4) !important;
+}
+
+/* Window title icon */
+.win98-title-icon {
+  width: 22px !important;
+  height: 22px !important;
+  margin-right: 8px !important;
+  filter: drop-shadow(1px 1px 2px #9B45CF88) !important;
+  image-rendering: pixelated !important; /* Added from App.css */
+}
+
+/* Window title text */
+.win98-title-text {
+  font-family: 'MS Sans Serif Bold', sans-serif !important;
+  font-weight: bold !important;
+  font-size: 16px !important;
+  margin-top: 1px !important;
+  white-space: nowrap !important;
+  overflow: hidden !important;
+  text-overflow: ellipsis !important;
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2) !important;
+}
+
+/* Inactive window title text */
+.win98-window.inactive .win98-title-text {
+  opacity: 0.9 !important; /* Slightly dimmed text but still readable */
+  text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.3) !important; /* Lighter shadow */
+}
+
+/* -----------------------------------------------------
+ * 5. WINDOW CONTROLS (MIN/MAX/CLOSE BUTTONS)
+ * ----------------------------------------------------- */
+
+/* Window controls container */
+.win98-window-controls {
+  height: 100% !important;
+  display: flex !important;
+  align-items: center !important;
+  margin-left: auto !important;
+}
+
+/* Individual window control buttons */
+.win98-window-button {
+  border: none !important;
+  outline: none !important;
+  background: transparent !important;
+  box-shadow: none !important;
+  padding: 0 !important;
+  margin-left: 2px !important;
+  width: 16px !important;
+  height: 14px !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  cursor: pointer !important;
+  position: relative !important;
+  transition: none !important;
+  border-radius: 0 !important;
+  top: 0 !important;
+}
+
+/* Window button images */
+.win98-window-button img {
+  display: block !important;
+  width: 16px !important;
+  height: 14px !important;
+  object-fit: contain !important;
+  pointer-events: none !important;
+}
+
+/* Hover state for window buttons */
+.win98-window-button:hover {
+  background-color: transparent !important;
+  border: none !important;
+  outline: 1px solid white !important;
+  outline-offset: -1px !important;
+  box-shadow: none !important;
+}
+
+/* Active state for window buttons */
+.win98-window-button:active {
+  border: none !important;
+  outline: 1px solid white !important;
+  outline-offset: -1px !important;
+  background-color: var(--theme-pink) !important;
+  box-shadow: none !important;
+}
+
+/* Add a subtle contrast effect for icons on hover and active states */
+.win98-window-button:hover img,
+.win98-window-button:active img {
+  filter: brightness(0.8) !important;
+}
+
+/* Button focus and focus-visible states */
+.win98-window-button:focus,
+.win98-window-button:focus-visible {
+  border: none !important;
+  outline: 1px dotted white !important;
+  outline-offset: -1px !important;
+  background-color: transparent !important;
+  box-shadow: none !important;
+}
+
+/* Special override to prevent circular shapes on window buttons */
+button.win98-window-button::before,
+button.win98-window-button::after {
+  display: none !important;
+  content: none !important;
+  background: none !important;
+  border: none !important;
+  border-radius: 0 !important;
+}
+
+/* -----------------------------------------------------
+ * 6. WINDOW CONTENT
+ * ----------------------------------------------------- */
+
+/* Window content area */
+.win98-window-content {
+  /* Structure */
+  display: flex !important;
+  flex-direction: column !important;
+  align-items: center !important;
+  justify-content: flex-start !important;
+  flex: 1 !important;
+  position: relative !important;
+  
+  /* Dimensions */
+  width: 100% !important;
+  height: calc(100% - var(--window-title-height)) !important;
+  
+  /* Spacing */
+  padding: 10px 12px !important;
+  margin-top: 1px !important;
+  box-sizing: border-box !important;
+  
+  /* Visibility */
+  visibility: visible !important;
+  opacity: 1 !important;
+  z-index: 9999 !important;
+  pointer-events: auto !important;
+  
+  /* Styling */
+  background-color: var(--theme-pink-lightest) !important;
+  border-top: 1px solid var(--theme-pink) !important;
+  overflow: auto !important;
+}
+
+/* -----------------------------------------------------
+ * 7. SPECIFIC WINDOW TYPES
+ * ----------------------------------------------------- */
+
+/* Window positioning and sizing for specific window types */
+.heybestie-preview-window,
+.heybestie-controls-window,
+.heybestie-message-window {
+  position: absolute !important;
+  background-color: var(--theme-pink-light) !important;
+  box-shadow: var(--window-shadow) !important;
+  border: 3px solid var(--theme-pink) !important;
+  border-style: outset !important;
+  box-sizing: border-box !important;
+  overflow: hidden !important;
+  transition: all var(--animation-speed-normal) ease !important;
+  z-index: 1 !important;
+  opacity: 1 !important; /* Override any transparency */
+}
+
+/* Preview window dimensions */
+.heybestie-preview-window {
+  min-width: 350px !important;
+  min-height: 400px !important;
+}
+
+/* Controls window dimensions */
+.heybestie-controls-window {
+  min-width: 240px !important;
+  min-height: auto !important;
+  max-width: fit-content !important;
+}
+
+/* Message window specific styling */
+.heybestie-message-window {
+  min-width: 300px !important;
+  max-width: 500px !important;
+  min-height: auto !important;
+}
+
+/* Media query for smaller screens */
+@media (max-width: 850px) {
+  .heybestie-preview-window {
+    position: fixed !important;
+    top: 10px !important;
+    left: 5% !important;
+    width: 90% !important;
+    height: 45vh !important;
+    max-height: 45vh !important;
+    margin: 0 auto !important;
+  }
+  
+  .heybestie-controls-window {
+    position: fixed !important;
+    top: calc(45vh + 20px) !important;
+    left: 5% !important;
+    width: 90% !important;
+    height: calc(45vh - 20px) !important;
+    max-height: calc(45vh - 20px) !important;
+    margin: 0 auto !important;
+  }
+}

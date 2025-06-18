@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Color Standardization Test</title>
+  <link rel="stylesheet" href="/src/styles/main-styles.css">
+  <style>
+    body {
+      padding: 20px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 20px;
+    }
+    .test-container {
+      width: 80%;
+      max-width: 800px;
+      padding: 20px;
+      background-color: var(--theme-pink-lightest);
+      border: 2px solid var(--theme-pink);
+      margin-bottom: 30px;
+    }
+    h1 {
+      text-align: center;
+      color: var(--theme-purple);
+    }
+    .color-sample {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+    .color-chip {
+      width: 100px;
+      height: 100px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      border-radius: 5px;
+      color: var(--white);
+      text-shadow: 1px 1px 0 var(--theme-purple);
+      margin: 5px;
+      box-shadow: 0 2px 6px var(--theme-purple);
+    }
+    .color-name {
+      font-size: 12px;
+      font-weight: bold;
+    }
+    .color-value {
+      font-size: 10px;
+      margin-top: 4px;
+    }
+    .element-sample {
+      margin: 20px 0;
+    }
+  </style>
+</head>
+<body>
+  <h1>Color Standardization Test</h1>
+  
+  <div class="test-container">
+    <h2>Design System Colors</h2>
+    <div class="color-sample">
+      <div class="color-chip" style="background-color: var(--theme-pink);">
+        <span class="color-name">theme-pink</span>
+        <span class="color-value">#FF70E0</span>
+      </div>
+      <div class="color-chip" style="background-color: var(--theme-pink-dark);">
+        <span class="color-name">theme-pink-dark</span>
+        <span class="color-value">#FF45B5</span>
+      </div>
+      <div class="color-chip" style="background-color: var(--theme-pink-light); color: var(--theme-purple);">
+        <span class="color-name">theme-pink-light</span>
+        <span class="color-value">#FFDFF8</span>
+      </div>
+      <div class="color-chip" style="background-color: var(--theme-pink-lightest); color: var(--theme-purple);">
+        <span class="color-name">theme-pink-lightest</span>
+        <span class="color-value">#FFEDFB</span>
+      </div>
+      <div class="color-chip" style="background-color: var(--theme-purple);">
+        <span class="color-name">theme-purple</span>
+        <span class="color-value">#C76CEF</span>
+      </div>
+      <div class="color-chip" style="background-color: var(--theme-purple-lighter);">
+        <span class="color-name">theme-purple-lighter</span>
+        <span class="color-value">#9B45CF</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="test-container">
+    <h2>UI Elements with Standardized Colors</h2>
+    
+    <div class="element-sample">
+      <h3>Message Box</h3>
+      <div class="win98-message-box">
+        <div class="win98-message-box-header">
+          <img src="/src/assets/icons/Information.svg" alt="Info">
+          Message Box Title
+        </div>
+        <div class="win98-message-content">
+          This text should be using design system colors (var(--theme-purple)),
+          not black or any other non-design system color.
+        </div>
+      </div>
+    </div>
+
+    <div class="element-sample">
+      <h3>Progress Bar</h3>
+      <div class="win98-progress-wrapper">
+        <div class="win98-progress-container">
+          <div class="win98-progress-bar"></div>
+        </div>
+      </div>
+      <div style="margin-top: 10px;">
+        <div class="win98-progress-wrapper">
+          <div class="win98-progress-container compact inset">
+            <div class="win98-progress-bar"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="element-sample">
+      <h3>Buttons</h3>
+      <button class="win98-button-classic">Standard Button</button>
+      <button class="win98-button-primary">Primary Button</button>
+    </div>
+
+    <div class="element-sample">
+      <h3>Text Colors</h3>
+      <p style="color: var(--theme-purple);">This text uses var(--theme-purple)</p>
+      <p style="color: var(--theme-purple-lighter);">This text uses var(--theme-purple-lighter)</p>
+    </div>
+  </div>
+
+</body>
+</html>

@@ -1,0 +1,269 @@
+/**
+ * Windows 98 App Layout Styling
+ * Extracted from App.css to create a separate layout component
+ */
+
+/* =========================== */
+/* FONT IMPORTS                */
+/* =========================== */
+
+/* Import Google Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Spicy+Rice&display=swap');
+
+/* Import Windows 98 fonts */
+@font-face {
+  font-family: 'MS Sans Serif';
+  src: url('../assets/MS Sans Serif.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+  font-size-adjust: 0.5; /* Improves readability at small sizes */
+  -webkit-font-smoothing: none;
+  -moz-osx-font-smoothing: none;
+}
+
+@font-face {
+  font-family: 'MS Sans Serif Bold';
+  src: url('../assets/MS Sans Serif Bold.ttf') format('truetype');
+  font-weight: bold;
+  font-style: normal;
+  font-display: swap;
+  font-size-adjust: 0.5; /* Improves readability at small sizes */
+  -webkit-font-smoothing: none;
+  -moz-osx-font-smoothing: none;
+}
+
+/* =========================== */
+/* APP LAYOUT & CONTAINERS     */
+/* =========================== */
+
+/* Main app layout */
+.app {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100vh;
+  position: relative;
+  overflow: hidden;
+  font-family: 'MS Sans Serif', Arial, sans-serif;
+}
+
+/* Windows containers */
+.heybestie-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: flex-start;
+  gap: 20px;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px;
+  position: relative;
+}
+
+/* Separate windows layout */
+.heybestie-preview-window,
+.heybestie-controls-window {
+  position: absolute;
+  background-color: var(--win98-gray);
+  box-shadow: 
+    inset -1px -1px var(--btn-frame-inner-2),
+    inset 1px 1px var(--btn-frame-inner-1),
+    2px 2px 8px rgba(255, 112, 224, 0.3);
+  border: 3px solid var(--win98-gray-darker);
+  border-style: outset;
+  box-sizing: border-box;
+  overflow: hidden;
+  transition: all var(--animation-speed-normal) ease;
+}
+
+.heybestie-preview-window {
+  min-width: 350px;
+  min-height: 400px;
+}
+
+.heybestie-controls-window {
+  min-width: 240px;
+  min-height: auto;
+  max-width: fit-content;
+}
+
+.heybestie-preview-container {
+  width: 100%;
+  height: calc(100% - 18px); /* Subtract title bar height */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  box-sizing: border-box;
+  overflow: hidden;
+  padding: 10px;
+  transition: height var(--animation-speed-slow) ease;
+}
+
+.heybestie-controls-container {
+  width: 100%;
+  height: calc(100% - 18px); /* Subtract title bar height */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  box-sizing: border-box;
+  overflow: hidden;
+  padding: 10px;
+}
+
+/* Canvas preview area */
+.canvas-preview-bg-wrapper {
+  width: 100%;
+  height: 100%;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: var(--win98-gray-lighter);
+  border: inset 2px var(--win98-gray-darker);
+  box-shadow: 
+    inset 1px 1px var(--inset-frame-inner-1),
+    inset -1px -1px var(--inset-frame-inner-4);
+  overflow: hidden;
+  box-sizing: border-box;
+}
+
+.heybestie-canvas-container {
+  width: 100%;
+  height: 100%;
+  max-height: 300px;
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+}
+
+.heybestie-canvas {
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain;
+  display: block;
+}
+
+/* Empty canvas placeholder */
+.empty-canvas-placeholder {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: var(--win98-gray-lighter);
+  color: var(--win98-button-text);
+  border: inset 2px var(--win98-gray-darker);
+  box-shadow: 
+    inset 1px 1px var(--inset-frame-inner-1),
+    inset -1px -1px var(--inset-frame-inner-4);
+  padding: 20px;
+  text-align: center;
+  font-size: var(--win98-font-size);
+  font-family: 'MS Sans Serif', Arial, sans-serif;
+}
+
+/* App content containers */
+.heybestie-controls-column {
+  width: 100%;
+  max-height: calc(100% - 30px);
+  padding: 5px;
+  box-sizing: border-box;
+  overflow-y: auto;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 3px;
+}
+
+.heybestie-content {
+  width: 100%;
+  height: 100%;
+  overflow-y: auto;
+  box-sizing: border-box;
+}
+
+/* File input container */
+.win98-file-input {
+  margin: 10px 0 12px; /* Increased spacing between file input and title bar */
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 28px;
+}
+
+/* =========================== */
+/* RESPONSIVE LAYOUT           */
+/* =========================== */
+
+/* Media query for mobile devices */
+@media (max-width: 767px) {
+  .heybestie-container {
+    flex-direction: column;
+    padding: 10px;
+    gap: 10px;
+  }
+  
+  .heybestie-preview-window,
+  .heybestie-controls-window {
+    position: relative;
+    width: 98%;
+    max-width: 98%;
+    min-width: auto;
+    margin: 0 auto;
+  }
+  
+  .heybestie-preview-window {
+    min-height: 300px;
+  }
+  
+  .heybestie-canvas-container {
+    max-height: 250px;
+  }
+}
+
+/* Media query for tablet devices */
+@media (min-width: 768px) and (max-width: 1023px) {
+  .heybestie-container {
+    gap: 15px;
+  }
+  
+  .heybestie-preview-window {
+    min-width: 320px;
+    min-height: 360px;
+  }
+  
+  .heybestie-controls-window {
+    min-width: 220px;
+  }
+}
+
+/* Landscape orientation fixes */
+@media (max-height: 500px) and (orientation: landscape) {
+  .heybestie-container {
+    flex-direction: row;
+    align-items: center;
+  }
+  
+  .heybestie-preview-window,
+  .heybestie-controls-window {
+    height: 90vh;
+  }
+  
+  .heybestie-preview-window {
+    width: 55%;
+  }
+  
+  .heybestie-controls-window {
+    width: 40%;
+  }
+}
