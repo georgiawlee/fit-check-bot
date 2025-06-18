@@ -28,9 +28,6 @@
 /* Visual effects and animations */
 @import url('./win98-visual-effects-complete.css');
 
-/* Animations and transitions */
-@import url('./win98-animations.css');
-
 /* -----------------------------------------------------
  * 3. COMPONENT STYLES
  * ----------------------------------------------------- */
@@ -49,12 +46,6 @@
 
 /* UI elements */
 @import url('./win98-ui-elements-complete.css');
-
-/* Custom scrollbars */
-@import url('./win98-scrollbars.css');
-
-/* Control fixes */
-@import url('./win98-controls-fix.css');
 
 /* -----------------------------------------------------
  * 4. LAYOUT AND APP-SPECIFIC STYLES
@@ -78,9 +69,6 @@
 
 /* Asset styling including icons and images */
 @import url('./win98-assets-complete.css');
-
-/* Custom cursors */
-@import url('./win98-cursors.css');
 
 /* -----------------------------------------------------
  * 6. DOCUMENTATION NOTES
