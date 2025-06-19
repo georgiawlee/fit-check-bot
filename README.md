@@ -1,12 +1,40 @@
-# React + Vite
+# ✨ Fit Check Bot 💅💖🍒🐶🥺🤪
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Built for hot takes and hotter fits.
 
-Currently, two official plugins are available:
+**Fit Check Bot** is your new favorite fashion bestie, that rates your outfits and turns your outfit pics into shareable iconic masterpieces - complete with compliments, roasts, and sparkles.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+Upload a fit. Pick a tone. Get a message overlaid in full Y2K energy.  
+Then download it, post it, or let the chaos begin.
 
-## Expanding the ESLint configuration
+## 💅 Features
+-  Pink Windows 98 visual design with draggable windows
+- 💅 Y2K pink + retro styling for max aesthetic
+- Windows 98 visual design with draggable windows
+- Authentic Windows 98 UI elements including:
+  - Classic windows with minimize/maximize/close buttons
+  - Period-accurate buttons and form elements
+  - MS Sans Serif typography
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+## How to Use
+
+1. Open the app in your browser (default: http://localhost:5173/)
+2. Upload your outfit photo using the file picker
+3. Choose your vibe: **compliment**, **roast**, or if you're feeling a little unhinged **surprise me**
+4. Click "Generate" to get your feedback
+5. Download and share your fit checked fit pics
+
+## 🛠️ Getting Started
+
+```bash
+# clone the repo (duh)
+git clone https://github.com/georgiawlee/fit-check-bot.git
+
+# enter the vibe check zone
+cd fit-check-bot
+
+# grab the essentials 
+npm install
+
+# launch this unhinged masterpiece
+npm run dev
