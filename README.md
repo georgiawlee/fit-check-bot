@@ -10,7 +10,6 @@ Then download it, post it, or let the chaos begin.
 ## 💅 Features
 -  Pink Windows 98 visual design with draggable windows
 - 💅 Y2K pink + retro styling for max aesthetic
-- Windows 98 visual design with draggable windows
 - Authentic Windows 98 UI elements including:
   - Classic windows with minimize/maximize/close buttons
   - Period-accurate buttons and form elements
