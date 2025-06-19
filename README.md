@@ -15,6 +15,8 @@ Then download it, post it, or let the chaos begin.
   - Classic windows with minimize/maximize/close buttons
   - Period-accurate buttons and form elements
   - MS Sans Serif typography
+ 
+<img width="1506" alt="fit check bot" src="https://github.com/user-attachments/assets/30e6a33b-0643-4044-a03a-4366b94d5a74" />
 
 ## How to Use
 
