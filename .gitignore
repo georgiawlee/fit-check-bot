@@ -19,6 +19,12 @@ dist-ssr
 .DS_Store
 *.suo
 *.ntvs*
+
+# Documentation files (except README.md)
+src/styles/*.md
+!src/styles/README.md
+css-consolidation-summary.md
+documentation-backup/
 *.njsproj
 *.sln
 *.sw?
