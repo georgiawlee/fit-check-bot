@@ -9,7 +9,7 @@
     "lint": "eslint .",
     "preview": "vite preview",
     "test:css": "vite --config vite.config.js --mode development --force src/test-css-standardization.jsx",
-    "generate": "your-build-script-here"
+    "generate": "npm run build"
   },
   "dependencies": {
     "react": "^19.1.0",
