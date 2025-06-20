@@ -5,7 +5,6 @@ Built for hot takes and hotter fits.
 **Fit Check Bot** is your new favorite fashion bestie, that rates your outfits and turns your outfit pics into shareable iconic masterpieces - complete with compliments, roasts, and sparkles.
 
 Upload a fit. Pick a tone. Get a message overlaid in full Y2K energy.  
-Then download it, post it, or let the chaos begin.
 
 ## 💅 Features
 -  Pink Windows 98 visual design with draggable windows
