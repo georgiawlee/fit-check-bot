@@ -6,6 +6,8 @@ Built for hot takes and hotter fits.
 
 Upload a fit. Pick a tone. Get a message overlaid in full Y2K energy.  
 
+✨ Try it out here ✨ - https://timely-speculoos-4df71a.netlify.app/
+
 ## 💅 Features
 -  Pink Windows 98 visual design with draggable windows
 - 💅 Y2K pink + retro styling for max aesthetic
