@@ -1,6 +1,6 @@
 # ✨ Fit Check Bot 💅💖🍒🐶🥺🤪
 
-Built for hot takes and hotter fits.
+Built for hot takes and ruthless fit checks.
 
 **Fit Check Bot** is your new favorite fashion bestie, that rates your outfits and turns your outfit pics into shareable iconic masterpieces - complete with compliments, roasts, and sparkles.
 
