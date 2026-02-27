@@ -8,6 +8,8 @@ Upload a fit. Pick a tone. Get a message overlaid in full Y2K energy.
 
 ✨ Try it out here ✨ - https://timely-speculoos-4df71a.netlify.app/
 
+💖 Pink Windows 98 design system here - https://www.figma.com/community/file/1096610830334314892
+
 ## 💅 Features
 -  Pink Windows 98 visual design with draggable windows
 - 💅 Y2K pink + retro styling for max aesthetic
